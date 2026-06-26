@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cbu8mx0vikr0"]
+
+[ext_resource type="PackedScene" uid="uid://t0c05bt1vvyc" path="res://actors/player/player.tscn" id="2_bl13t"]
+[ext_resource type="Script" uid="uid://du4y6h7xfqd4n" path="res://core/move_object.gd" id="2_iyx0m"]
+[ext_resource type="PackedScene" uid="uid://bhys1fcyputuk" path="res://core/Input.tscn" id="3_iyx0m"]
+
+[node name="Node2D" type="Node2D" unique_id=471152253]
+
+[node name="Player" parent="." unique_id=766519368 instance=ExtResource("2_bl13t")]
+position = Vector2(328, 510)
+
+[node name="MovePlayer" type="Node2D" parent="." unique_id=2060950705]
+script = ExtResource("2_iyx0m")
+
+[node name="Input" parent="MovePlayer" unique_id=2142687075 instance=ExtResource("3_iyx0m")]
