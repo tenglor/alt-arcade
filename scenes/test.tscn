@@ -9,7 +9,9 @@
 [node name="Player" parent="." unique_id=766519368 instance=ExtResource("2_bl13t")]
 position = Vector2(328, 510)
 
-[node name="MovePlayer" type="Node2D" parent="." unique_id=2060950705]
+[node name="MovePlayer" type="Node2D" parent="." unique_id=2060950705 node_paths=PackedStringArray("object")]
 script = ExtResource("2_iyx0m")
+object = NodePath("../Player")
+points = PackedVector2Array(328, 210, 640, 210, 328, 510, 640, 510)
 
 [node name="Input" parent="MovePlayer" unique_id=2142687075 instance=ExtResource("3_iyx0m")]

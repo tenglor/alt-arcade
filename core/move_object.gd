@@ -1,14 +1,17 @@
 @tool
-extends Node
+extends Node2D
 
 @export var object: Node2D
-@export var points: PackedVector2Array = [Vector2.ZERO, Vector2.ZERO, Vector2.ZERO, Vector2.ZERO]
+@export var points: PackedVector2Array = [Vector2.ZERO, Vector2.ZERO, Vector2.ZERO, Vector2.ZERO]:
+	set(value):
+		points = value
+		queue_redraw()  # Автоматическая перерисовка
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var detector = get_node("Input")
 	detector.quarter_clicked.connect(quarter_clicked)
-	pass # Replace with function body.
+	queue_redraw()
 
 func quarter_clicked(quarter)-> void:
 	var pos: Vector2 = points[quarter]
@@ -16,9 +19,11 @@ func quarter_clicked(quarter)-> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	queue_redraw()
 	
 func _draw():
-	for p in points:
+	for i in range(points.size()):
+		var p = points[i]
 		draw_circle(p, 8, Color.RED)     # Отрисовка каждой точки
-		draw_string(ThemeDB.fallback_font, p + Vector2(10, -5), str(p), HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color.WHITE) # Подпись координат
+		var str = str(p) + ", i: " + str(i)
+		draw_string(ThemeDB.fallback_font, p + Vector2(10, -5), str, HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color.WHITE) # Подпись координат

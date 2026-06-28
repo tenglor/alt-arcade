@@ -7,6 +7,8 @@ func _ready() -> void:
 	detector.quarter_clicked.connect(quarter_clicked)
 	pass # Replace with function body.
 
+func set_sprite(quarter):
+	pass
 
 func quarter_clicked(quarter)-> void:
 	print("Клик в четверти: ", quarter)
