@@ -2,7 +2,61 @@
 
 [ext_resource type="Script" uid="uid://ds6afh6jordoe" path="res://actors/player/player.gd" id="1_ilk7j"]
 [ext_resource type="Script" uid="uid://c6d8uqfghxq2s" path="res://core/input.gd" id="2_ax26v"]
-[ext_resource type="Texture2D" uid="uid://butelshr38spv" path="res://icon.svg" id="3_ax26v"]
+[ext_resource type="Texture2D" uid="uid://cdg2n8ucpovlq" path="res://actors/player/maid1.png" id="3_ax26v"]
+[ext_resource type="Texture2D" uid="uid://blwcsgnuyt8se" path="res://actors/player/maid2-mirror.png" id="4_15y17"]
+[ext_resource type="Texture2D" uid="uid://dfvs7hdkifu8n" path="res://actors/player/maid2.png" id="4_lsqbn"]
+[ext_resource type="Texture2D" uid="uid://b82kj08cpjif1" path="res://actors/player/maid1-mirror.png" id="6_bop6h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15y17"]
+atlas = ExtResource("4_lsqbn")
+region = Rect2(0, 0, 2039, 2894)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_388e2"]
+atlas = ExtResource("4_15y17")
+region = Rect2(0, 0, 2039, 2894)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a744p"]
+atlas = ExtResource("3_ax26v")
+region = Rect2(0, 0, 2039, 2894)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsln6"]
+atlas = ExtResource("6_bop6h")
+region = Rect2(0, 0, 2039, 2894)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ax26v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15y17")
+}],
+"loop": true,
+"name": &"quarter0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_388e2")
+}],
+"loop": true,
+"name": &"quarter1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a744p")
+}],
+"loop": true,
+"name": &"quarter2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsln6")
+}],
+"loop": true,
+"name": &"quarter3",
+"speed": 5.0
+}]
 
 [node name="Player" type="Node2D" unique_id=766519368]
 script = ExtResource("1_ilk7j")
@@ -11,4 +65,13 @@ script = ExtResource("1_ilk7j")
 script = ExtResource("2_ax26v")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=379417608]
+visible = false
+position = Vector2(-40, -247)
+scale = Vector2(0.1708558, 0.1708558)
 texture = ExtResource("3_ax26v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=232555983]
+position = Vector2(-35, -236)
+scale = Vector2(0.16184404, 0.16184404)
+sprite_frames = SubResource("SpriteFrames_ax26v")
+animation = &"quarter3"

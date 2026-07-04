@@ -1,5 +1,6 @@
 extends Node
 
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D	
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,10 +9,12 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func set_sprite(quarter):
-	pass
+	var animation_name = "quarter" + str(quarter)
+	animated_sprite.play(animation_name)
 
 func quarter_clicked(quarter)-> void:
 	print("Клик в четверти: ", quarter)
+	set_sprite(quarter)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
