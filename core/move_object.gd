@@ -25,5 +25,5 @@ func _draw():
 	for i in range(points.size()):
 		var p = points[i]
 		draw_circle(p, 8, Color.RED)     # Отрисовка каждой точки
-		var str = str(p) + ", i: " + str(i)
-		draw_string(ThemeDB.fallback_font, p + Vector2(10, -5), str, HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color.WHITE) # Подпись координат
+		var text_str = str(p) + ", i: " + str(i)
+		draw_string(ThemeDB.fallback_font, p + Vector2(10, -5), text_str, HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color.WHITE) # Подпись координат

@@ -71,7 +71,7 @@ scale = Vector2(0.1708558, 0.1708558)
 texture = ExtResource("3_ax26v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=232555983]
-position = Vector2(-35, -236)
+position = Vector2(-2, -232)
 scale = Vector2(0.16184404, 0.16184404)
 sprite_frames = SubResource("SpriteFrames_ax26v")
 animation = &"quarter3"

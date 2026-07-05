@@ -3,6 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://t0c05bt1vvyc" path="res://actors/player/player.tscn" id="2_bl13t"]
 [ext_resource type="Script" uid="uid://du4y6h7xfqd4n" path="res://core/move_object.gd" id="2_iyx0m"]
 [ext_resource type="PackedScene" uid="uid://bhys1fcyputuk" path="res://core/Input.tscn" id="3_iyx0m"]
+[ext_resource type="PackedScene" uid="uid://dq85a8obr2t27" path="res://actors/kitchen/kitchen.tscn" id="4_74lek"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74lek"]
+size = Vector2(200, 20)
 
 [node name="Node2D" type="Node2D" unique_id=471152253]
 
@@ -12,6 +16,26 @@ position = Vector2(573, 643)
 [node name="MovePlayer" type="Node2D" parent="." unique_id=2060950705 node_paths=PackedStringArray("object")]
 script = ExtResource("2_iyx0m")
 object = NodePath("../Player")
-points = PackedVector2Array(576, 640, 576, 640, 576, 640, 576, 640)
+points = PackedVector2Array(450, 640, 650, 640, 450, 640, 650, 640)
 
 [node name="Input" parent="MovePlayer" unique_id=2142687075 instance=ExtResource("3_iyx0m")]
+
+[node name="Kitchen" parent="." unique_id=942798572 instance=ExtResource("4_74lek")]
+position = Vector2(63, 210)
+
+[node name="Kitchen2" parent="." unique_id=521374592 instance=ExtResource("4_74lek")]
+position = Vector2(64, 482)
+
+[node name="Kitchen3" parent="." unique_id=1927154234 instance=ExtResource("4_74lek")]
+position = Vector2(1084, 207)
+
+[node name="Kitchen4" parent="." unique_id=2014286947 instance=ExtResource("4_74lek")]
+position = Vector2(1076, 473)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=771460496]
+position = Vector2(17, 232)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1255401844]
+position = Vector2(86, 45)
+rotation = 0.4660029
+shape = SubResource("RectangleShape2D_74lek")
