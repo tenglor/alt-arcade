@@ -1,4 +1,4 @@
-@tool
+# @tool
 extends Node2D
 
 @export var object: Node2D
@@ -20,7 +20,7 @@ func quarter_clicked(quarter)-> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	queue_redraw()
-	
+
 func _draw():
 	for i in range(points.size()):
 		var p = points[i]

@@ -8,11 +8,10 @@ var is_timeout = false
 func _ready() -> void:
 	pass # Replace with function body.
 
-func spawn_enemy(location: Vector2):
+func spawn_egg():
 	# Создаем экземпляр (копию) шаблона
 	var egg_instance = egg_prefab.instantiate()
-	# Устанавливаем его позицию
-	# egg_instance.position = location
+	# Устанавливаем его позицию	
 	egg_instance.position = egg_spawn
 	egg_instance.apply_central_impulse(Vector2(10, 0))
 	egg_instance.apply_torque_impulse(500.0)
@@ -20,12 +19,13 @@ func spawn_enemy(location: Vector2):
 	add_child(egg_instance)
 
 func _on_timer_timeout():
-	spawn_enemy(Vector2.ZERO)
+	spawn_egg()
 	is_timeout = false
 	print("Прошло 3 секунды!")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	return
 	if is_timeout:
 		return 
 	print("Создание таймера")

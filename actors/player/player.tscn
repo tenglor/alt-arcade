@@ -29,7 +29,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_15y17")
 }],
-"loop": true,
+"loop": 1,
 "name": &"quarter0",
 "speed": 5.0
 }, {
@@ -37,7 +37,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_388e2")
 }],
-"loop": true,
+"loop": 1,
 "name": &"quarter1",
 "speed": 5.0
 }, {
@@ -45,7 +45,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a744p")
 }],
-"loop": true,
+"loop": 1,
 "name": &"quarter2",
 "speed": 5.0
 }, {
@@ -53,10 +53,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lsln6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"quarter3",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p07ip"]
+size = Vector2(122, 77.5)
 
 [node name="Player" type="Node2D" unique_id=766519368]
 script = ExtResource("1_ilk7j")
@@ -74,4 +77,26 @@ texture = ExtResource("3_ax26v")
 position = Vector2(-2, -232)
 scale = Vector2(0.16184404, 0.16184404)
 sprite_frames = SubResource("SpriteFrames_ax26v")
-animation = &"quarter3"
+animation = &"quarter1"
+
+[node name="Basket" type="Area2D" parent="." unique_id=788022185]
+
+[node name="shape0" type="CollisionShape2D" parent="Basket" unique_id=621908826]
+position = Vector2(-102, -339.75)
+shape = SubResource("RectangleShape2D_p07ip")
+disabled = true
+
+[node name="shape1" type="CollisionShape2D" parent="Basket" unique_id=948579637]
+position = Vector2(100, -339)
+shape = SubResource("RectangleShape2D_p07ip")
+disabled = true
+
+[node name="shape2" type="CollisionShape2D" parent="Basket" unique_id=623608090]
+position = Vector2(-100, -199)
+shape = SubResource("RectangleShape2D_p07ip")
+disabled = true
+
+[node name="shape3" type="CollisionShape2D" parent="Basket" unique_id=1707534907]
+position = Vector2(99, -200)
+shape = SubResource("RectangleShape2D_p07ip")
+disabled = true
