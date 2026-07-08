@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://om6wjx32qxct"]
 
+[ext_resource type="Script" uid="uid://sjpfnltdxmmt" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
+[ext_resource type="Texture2D" uid="uid://dysj75vps8n01" path="res://ui/main_menu/title_picture.png" id="2_mu8pm"]
+
 [node name="MainMenu" type="Control" unique_id=1618671883]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_uhj5c")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=142855091]
 layout_mode = 1
@@ -18,8 +22,11 @@ offset_bottom = 2.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=654393211]
 layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer" unique_id=741449929]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer/PanelContainer" unique_id=2000508994]
@@ -41,14 +48,32 @@ text = "New Game"
 [node name="LoadButton" type="Button" parent="PanelContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1237579370]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+disabled = true
 text = "Load"
 
 [node name="SettingsButton" type="Button" parent="PanelContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1052120147]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+disabled = true
 text = "Settings"
 
 [node name="ExitButton" type="Button" parent="PanelContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=375023501]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 text = "Exit"
+
+[node name="Control" type="Control" parent="PanelContainer/HBoxContainer" unique_id=1171255831]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer" unique_id=2054266609]
+layout_mode = 2
+texture = ExtResource("2_mu8pm")
+expand_mode = 3
+
+[node name="Control2" type="Control" parent="PanelContainer/HBoxContainer" unique_id=1751191446]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[connection signal="pressed" from="PanelContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
