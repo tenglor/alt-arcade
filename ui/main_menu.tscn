@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://om6wjx32qxct"]
+
+[node name="MainMenu" type="Control" unique_id=1618671883]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=142855091]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = 2.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=654393211]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer" unique_id=741449929]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer/PanelContainer" unique_id=2000508994]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 120
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=1050341739]
+layout_mode = 2
+
+[node name="NewGameButton" type="Button" parent="PanelContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=108013655]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "New Game"
+
+[node name="LoadButton" type="Button" parent="PanelContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1237579370]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Load"
+
+[node name="SettingsButton" type="Button" parent="PanelContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1052120147]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="PanelContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=375023501]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Exit"
