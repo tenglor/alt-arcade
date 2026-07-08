@@ -1,4 +1,4 @@
-# @tool
+@tool
 extends Node2D
 
 @export var object: Node2D

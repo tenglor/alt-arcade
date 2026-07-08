@@ -10,6 +10,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p07ip"]
 size = Vector2(128, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i60o8"]
+size = Vector2(1153, 20)
+
 [node name="Node2D" type="Node2D" unique_id=471152253]
 
 [node name="Player" parent="." unique_id=766519368 instance=ExtResource("2_bl13t")]
@@ -25,7 +28,7 @@ kitchens = [NodePath("../Kitchen0"), NodePath("../Kitchen1"), NodePath("../Kitch
 [node name="MovePlayer" type="Node2D" parent="." unique_id=2060950705 node_paths=PackedStringArray("object")]
 script = ExtResource("2_iyx0m")
 object = NodePath("../Player")
-points = PackedVector2Array(450, 640, 650, 640, 450, 640, 650, 640)
+points = PackedVector2Array(450, 640, 640, 640, 450, 640, 640, 640)
 
 [node name="Input" parent="MovePlayer" unique_id=2142687075 instance=ExtResource("3_iyx0m")]
 
@@ -84,3 +87,10 @@ texture = ExtResource("5_j5jx5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen4/StaticBody2D4" unique_id=997555346]
 shape = SubResource("RectangleShape2D_p07ip")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1331016368]
+position = Vector2(611, 666)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1419838689]
+position = Vector2(-40, -15)
+shape = SubResource("RectangleShape2D_i60o8")

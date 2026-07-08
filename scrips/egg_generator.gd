@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var kitchens: Array[Node2D]
-var rng = RandomNumberGenerator.new()		
+var rng = RandomNumberGenerator.new()
 var is_timeout = false
 
 # Called when the node enters the scene tree for the first time.
@@ -12,12 +12,12 @@ func _on_timer_timeout():
 	var i = rng.randi_range(0, 3)
 	kitchens[i].spawn_egg()
 	is_timeout = false
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:	
+func _process(delta: float) -> void:
 	if is_timeout:
-		return 
-	print("Создание таймера")
+		return
+	# print("Создание таймера")
 	is_timeout = true
 	# Создаем новый таймер
 	var timer = Timer.new()
