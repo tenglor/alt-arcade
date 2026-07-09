@@ -10,7 +10,7 @@ friction = 0.5
 radius = 21.0
 height = 60.0
 
-[node name="Egg" type="RigidBody2D" unique_id=89488235]
+[node name="Egg" type="RigidBody2D" unique_id=89488235 groups=["egg"]]
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_3p2of")
 script = ExtResource("1_3p2of")

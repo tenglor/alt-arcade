@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _on_timer_timeout():
 	var i = rng.randi_range(0, 3)
-	kitchens[i].spawn_egg()
+	kitchens[i].get_node("Kitchen").spawn_egg()
 	is_timeout = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
