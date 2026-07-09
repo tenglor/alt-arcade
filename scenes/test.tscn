@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://t0c05bt1vvyc" path="res://actors/player/player.tscn" id="2_bl13t"]
 [ext_resource type="Script" uid="uid://du4y6h7xfqd4n" path="res://core/move_object.gd" id="2_iyx0m"]
 [ext_resource type="Script" uid="uid://b0mn4fhhvmr7r" path="res://scrips/egg_generator.gd" id="2_lpvoh"]
-[ext_resource type="PackedScene" uid="uid://bhys1fcyputuk" path="res://core/Input.tscn" id="3_iyx0m"]
+[ext_resource type="PackedScene" uid="uid://bhys1fcyputuk" path="res://core/input/Input.tscn" id="3_iyx0m"]
 [ext_resource type="PackedScene" uid="uid://dq85a8obr2t27" path="res://actors/kitchen/kitchen.tscn" id="4_74lek"]
 [ext_resource type="Texture2D" uid="uid://butelshr38spv" path="res://icon.svg" id="5_j5jx5"]
 
@@ -13,7 +13,7 @@ size = Vector2(128, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i60o8"]
 size = Vector2(1153, 20)
 
-[node name="Node2D" type="Node2D" unique_id=471152253]
+[node name="Test" type="Node2D" unique_id=471152253]
 
 [node name="Player" parent="." unique_id=766519368 instance=ExtResource("2_bl13t")]
 position = Vector2(573, 643)
