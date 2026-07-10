@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bvjfderfpdtx1"]
+
+[ext_resource type="Script" uid="uid://b2kgo0ucx5xk0" path="res://ui/game_menu/game_menu.gd" id="1_7seul"]
+
+[node name="GameMenu" type="Control" unique_id=261793984]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7seul")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=821062014]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.264
+anchor_top = 0.128
+anchor_right = 0.264
+anchor_bottom = 0.128
+offset_left = 124.87201
+offset_top = 87.056
+offset_right = 465.872
+offset_bottom = 416.056
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1706140913]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=342787556]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1819780056]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Continue"
+
+[node name="ReturnTitleButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=785554596]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Return to Title Menu"
+
+[node name="ExitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=346466953]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
