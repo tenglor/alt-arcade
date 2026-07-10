@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dth0wkql67bja"]
 
 [ext_resource type="Texture2D" uid="uid://butelshr38spv" path="res://icon.svg" id="1_qu0mo"]
-[ext_resource type="Script" uid="uid://b1rgi3u3by0ta" path="res://objects/kitchen_roost/kitchen_roost.gd" id="1_y45th"]
-[ext_resource type="PackedScene" uid="uid://dq85a8obr2t27" path="res://actors/kitchen/kitchen.tscn" id="2_y45th"]
+[ext_resource type="Script" uid="uid://b1rgi3u3by0ta" path="res://objects/chicken_roost/chicken_roost.gd" id="1_y45th"]
+[ext_resource type="PackedScene" uid="uid://dq85a8obr2t27" path="res://actors/chicken/chicken.tscn" id="2_y45th"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ef1i7"]
 size = Vector2(128, 128)
@@ -10,7 +10,7 @@ size = Vector2(128, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qu0mo"]
 size = Vector2(175.25, 20)
 
-[node name="KitchenRoost" type="Node2D" unique_id=1178654223]
+[node name="ChickenRoost" type="Node2D" unique_id=1178654223]
 script = ExtResource("1_y45th")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2060797645]

@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://du4y6h7xfqd4n" path="res://core/move_object.gd" id="2_iyx0m"]
 [ext_resource type="Script" uid="uid://b0mn4fhhvmr7r" path="res://scrips/egg_generator.gd" id="2_lpvoh"]
 [ext_resource type="PackedScene" uid="uid://bhys1fcyputuk" path="res://core/input/Input.tscn" id="3_iyx0m"]
-[ext_resource type="PackedScene" uid="uid://dth0wkql67bja" path="res://objects/kitchen_roost/kitchen_roost.tscn" id="7_at5dv"]
+[ext_resource type="PackedScene" uid="uid://dth0wkql67bja" path="res://objects/chicken_roost/chicken_roost.tscn" id="7_at5dv"]
 [ext_resource type="PackedScene" uid="uid://bvjfderfpdtx1" path="res://ui/game_menu/game_menu.tscn" id="7_jcd4p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i60o8"]
@@ -22,7 +22,7 @@ position = Vector2(990.99994, 368.00003)
 rotation = -0.34233928
 scale = Vector2(3.41, 0.425)
 script = ExtResource("2_lpvoh")
-kitchens = [NodePath("../KitchenRoost0"), NodePath("../KitchenRoost1"), NodePath("../KitchenRoost2"), NodePath("../KitchenRoost3")]
+kitchens = [NodePath("../ChickenRoost0"), NodePath("../ChickenRoost1"), NodePath("../ChickenRoost2"), NodePath("../ChickenRoost3")]
 
 [node name="MovePlayer" type="Node2D" parent="." unique_id=2060950705 node_paths=PackedStringArray("object")]
 script = ExtResource("2_iyx0m")
@@ -38,17 +38,17 @@ position = Vector2(611, 666)
 position = Vector2(-40, -15)
 shape = SubResource("RectangleShape2D_i60o8")
 
-[node name="KitchenRoost0" parent="." unique_id=1178654223 instance=ExtResource("7_at5dv")]
+[node name="ChickenRoost0" parent="." unique_id=1178654223 instance=ExtResource("7_at5dv")]
 position = Vector2(62, 124)
 
-[node name="KitchenRoost1" parent="." unique_id=2089098102 instance=ExtResource("7_at5dv")]
+[node name="ChickenRoost1" parent="." unique_id=2089098102 instance=ExtResource("7_at5dv")]
 position = Vector2(1077, 113)
 scale = Vector2(-1, 1)
 
-[node name="KitchenRoost2" parent="." unique_id=1537603867 instance=ExtResource("7_at5dv")]
+[node name="ChickenRoost2" parent="." unique_id=1537603867 instance=ExtResource("7_at5dv")]
 position = Vector2(63, 330)
 
-[node name="KitchenRoost3" parent="." unique_id=310547418 instance=ExtResource("7_at5dv")]
+[node name="ChickenRoost3" parent="." unique_id=310547418 instance=ExtResource("7_at5dv")]
 position = Vector2(1067, 302)
 scale = Vector2(-1, 1)
 
