@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _on_timer_timeout():
 	var i = rng.randi_range(0, 3)
-	var chicken = chicken_roosts[i].get_node("Chicken")
+	var chicken = chicken_roosts[i]
 	chicken.spawn_egg(chicken.position)
 	is_timeout = false
 
