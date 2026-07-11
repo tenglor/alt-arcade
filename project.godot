@@ -23,10 +23,13 @@ project/assembly_name="alt-arcade"
 
 player=""
 egg=""
+floor=""
 
 [layer_names]
 
 2d_physics/layer_2="Player"
+2d_physics/layer_3="Egg"
+2d_physics/layer_4="Layer 4"
 
 [physics]
 

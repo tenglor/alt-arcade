@@ -14,7 +14,7 @@ size = Vector2(175.25, 20)
 script = ExtResource("1_y45th")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2060797645]
-position = Vector2(97, 85)
+position = Vector2(100, 74)
 rotation = 0.38048178
 scale = Vector2(3.41, 0.425)
 
@@ -24,10 +24,12 @@ texture = ExtResource("1_qu0mo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1130313723]
 shape = SubResource("RectangleShape2D_ef1i7")
 
-[node name="Kitchen" parent="." unique_id=942798572 instance=ExtResource("2_y45th")]
+[node name="Chicken" parent="." unique_id=942798572 instance=ExtResource("2_y45th")]
 position = Vector2(0, 1)
 
 [node name="DetectArea" type="Area2D" parent="." unique_id=419806731]
+position = Vector2(3, -11)
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea" unique_id=425418180]
 position = Vector2(393, 166)

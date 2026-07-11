@@ -8,36 +8,22 @@ var is_timeout = false
 func _ready() -> void:
 	pass # Replace with function body.
 
-func spawn_egg():
+func spawn_egg(pos: Vector2):
 	# Создаем экземпляр (копию) шаблона
-	var egg_instance = egg_prefab.instantiate()
-	# Устанавливаем его позицию	
-	egg_instance.position = egg_spawn
-	egg_instance.apply_central_impulse(Vector2(10, 0))
-	egg_instance.apply_torque_impulse(500.0)
+	var egg = egg_prefab.instantiate()
+	get_parent().add_child(egg)
+	# Устанавливаем его позицию
+	egg.position = pos
+	egg.apply_central_impulse(Vector2(10, 0))
+	egg.apply_torque_impulse(500.0)
+	# egg.scale = Vector2.ONE
+	# egg.global_scale = Vector2.ONE
+	# egg.call_deferred("set_transform", Transform2D.IDENTITY)
+	# egg.call_deferred("set_global_position", pos)
+	# egg.call_deferred("set_scale", Vector2.ONE)
 	# Добавляем в дерево сцены как дочерний узел
-	add_child(egg_instance)
 
-func _on_timer_timeout():
-	spawn_egg()
-	is_timeout = false
-	print("Прошло 3 секунды!")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	return
-	if is_timeout:
-		return 
-	print("Создание таймера")
-	is_timeout = true
-	# Создаем новый таймер
-	var timer = Timer.new()
-	# Добавляем его в сцену
-	add_child(timer)
-	# Устанавливаем интервал в 10 секунд
-	timer.wait_time = 3.0
-	timer.one_shot = true
-	# Автоматически запускаем при входе в дерево сцены
-	timer.start()
-	# Подключаем сигнал timeout к функции
-	timer.timeout.connect(_on_timer_timeout)
+	pass

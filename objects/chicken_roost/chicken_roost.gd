@@ -22,11 +22,9 @@ func _on_body_exited(body) -> void:
 func _on_area_entered(body) -> void:
 	if body.is_in_group("player"):
 		player_check = true;
-		print("Player come")
 
 func _on_area_exited(body) -> void:
 	if body.is_in_group("player"):
-		print("Player gone")
 		player_check = false;
 
 func _process(delta: float) -> void:

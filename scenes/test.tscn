@@ -16,13 +16,14 @@ script = ExtResource("1_at5dv")
 
 [node name="Player" parent="." unique_id=766519368 instance=ExtResource("2_bl13t")]
 position = Vector2(573, 643)
+scale = Vector2(1.78, 1.78)
 
-[node name="EggGenerator" type="Node2D" parent="." unique_id=478956919 node_paths=PackedStringArray("kitchens")]
+[node name="EggGenerator" type="Node2D" parent="." unique_id=478956919 node_paths=PackedStringArray("chicken_roosts")]
 position = Vector2(990.99994, 368.00003)
 rotation = -0.34233928
 scale = Vector2(3.41, 0.425)
 script = ExtResource("2_lpvoh")
-kitchens = [NodePath("../ChickenRoost0"), NodePath("../ChickenRoost1"), NodePath("../ChickenRoost2"), NodePath("../ChickenRoost3")]
+chicken_roosts = [NodePath("../ChickenRoost0"), NodePath("../ChickenRoost1"), NodePath("../ChickenRoost2"), NodePath("../ChickenRoost3")]
 
 [node name="MovePlayer" type="Node2D" parent="." unique_id=2060950705 node_paths=PackedStringArray("object")]
 script = ExtResource("2_iyx0m")
@@ -31,25 +32,26 @@ points = PackedVector2Array(500, 640, 640, 640, 500, 640, 640, 640)
 
 [node name="Input" parent="MovePlayer" unique_id=2142687075 instance=ExtResource("3_iyx0m")]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1331016368]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1331016368 groups=["floor"]]
 position = Vector2(611, 666)
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1419838689]
 position = Vector2(-40, -15)
 shape = SubResource("RectangleShape2D_i60o8")
 
 [node name="ChickenRoost0" parent="." unique_id=1178654223 instance=ExtResource("7_at5dv")]
-position = Vector2(62, 124)
+position = Vector2(65, 193)
 
 [node name="ChickenRoost1" parent="." unique_id=2089098102 instance=ExtResource("7_at5dv")]
-position = Vector2(1077, 113)
+position = Vector2(1068, 194)
 scale = Vector2(-1, 1)
 
 [node name="ChickenRoost2" parent="." unique_id=1537603867 instance=ExtResource("7_at5dv")]
-position = Vector2(63, 330)
+position = Vector2(56, 350)
 
 [node name="ChickenRoost3" parent="." unique_id=310547418 instance=ExtResource("7_at5dv")]
-position = Vector2(1067, 302)
+position = Vector2(1060, 338)
 scale = Vector2(-1, 1)
 
 [node name="GameMenu" parent="." unique_id=261793984 instance=ExtResource("7_jcd4p")]

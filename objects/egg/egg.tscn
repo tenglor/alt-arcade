@@ -1,25 +1,25 @@
 [gd_scene format=3 uid="uid://b3nafqj812pnh"]
 
 [ext_resource type="Script" uid="uid://dqvkkueaj5oap" path="res://objects/egg/egg.gd" id="1_3p2of"]
-[ext_resource type="Texture2D" uid="uid://butelshr38spv" path="res://icon.svg" id="1_q54iw"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3p2of"]
-friction = 0.5
+[ext_resource type="PhysicsMaterial" uid="uid://bbv14b2rtwcau" path="res://objects/egg/egg_physics_material.tres" id="1_ykx8v"]
+[ext_resource type="Texture2D" uid="uid://bdvorol2o10pm" path="res://objects/egg/egg0.png" id="2_3p2of"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3p2of"]
-radius = 21.0
-height = 60.0
+radius = 17.0
+height = 48.0
 
 [node name="Egg" type="RigidBody2D" unique_id=89488235 groups=["egg"]]
+collision_layer = 4
+collision_mask = 3
 mass = 0.2
-physics_material_override = SubResource("PhysicsMaterial_3p2of")
+physics_material_override = ExtResource("1_ykx8v")
 script = ExtResource("1_3p2of")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=295305459]
-position = Vector2(-5.684342e-14, -30.000002)
-scale = Vector2(0.34374997, 0.47265628)
-texture = ExtResource("1_q54iw")
+position = Vector2(0, -25)
+scale = Vector2(0.06, 0.057)
+texture = ExtResource("2_3p2of")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=302676581]
-position = Vector2(0, -30)
+position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_3p2of")

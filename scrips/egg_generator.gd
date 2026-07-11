@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var kitchens: Array[Node2D]
+@export var chicken_roosts: Array[Node2D]
 var rng = RandomNumberGenerator.new()
 var is_timeout = false
 
@@ -10,7 +10,8 @@ func _ready() -> void:
 
 func _on_timer_timeout():
 	var i = rng.randi_range(0, 3)
-	kitchens[i].get_node("Kitchen").spawn_egg()
+	var chicken = chicken_roosts[i].get_node("Chicken")
+	chicken.spawn_egg(chicken.position)
 	is_timeout = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
