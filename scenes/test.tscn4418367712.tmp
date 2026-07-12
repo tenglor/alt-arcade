@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://cbu8mx0vikr0"]
+
+[ext_resource type="Script" uid="uid://cvp62wnsab0rf" path="res://scenes/scene.gd" id="1_at5dv"]
+[ext_resource type="PackedScene" uid="uid://t0c05bt1vvyc" path="res://actors/player/player.tscn" id="2_bl13t"]
+[ext_resource type="Script" uid="uid://du4y6h7xfqd4n" path="res://core/move_object.gd" id="2_iyx0m"]
+[ext_resource type="Script" uid="uid://b0mn4fhhvmr7r" path="res://scrips/egg_generator.gd" id="2_lpvoh"]
+[ext_resource type="PackedScene" uid="uid://bhys1fcyputuk" path="res://core/input/Input.tscn" id="3_iyx0m"]
+[ext_resource type="PackedScene" uid="uid://dth0wkql67bja" path="res://objects/chicken_roost/chicken_roost.tscn" id="7_at5dv"]
+[ext_resource type="PackedScene" uid="uid://bvjfderfpdtx1" path="res://ui/game_menu/game_menu.tscn" id="7_jcd4p"]
+[ext_resource type="PackedScene" uid="uid://bqkeh3b8bismv" path="res://ui/hud/hud.tscn" id="8_jcd4p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i60o8"]
+size = Vector2(1153, 20)
+
+[node name="Test" type="Node2D" unique_id=471152253]
+script = ExtResource("1_at5dv")
+
+[node name="Player" parent="." unique_id=766519368 instance=ExtResource("2_bl13t")]
+position = Vector2(573, 643)
+scale = Vector2(1.78, 1.78)
+
+[node name="HUD" parent="." unique_id=1193212197 instance=ExtResource("8_jcd4p")]
+
+[node name="EggGenerator" type="Node2D" parent="." unique_id=478956919]
+position = Vector2(990.99994, 368.00003)
+rotation = -0.34233928
+scale = Vector2(3.41, 0.425)
+script = ExtResource("2_lpvoh")
+
+[node name="MovePlayer" type="Node2D" parent="." unique_id=2060950705 node_paths=PackedStringArray("object")]
+script = ExtResource("2_iyx0m")
+object = NodePath("../Player")
+points = PackedVector2Array(500, 640, 640, 640, 500, 640, 640, 640)
+
+[node name="Input" parent="MovePlayer" unique_id=2142687075 instance=ExtResource("3_iyx0m")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1331016368 groups=["floor"]]
+position = Vector2(611, 666)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1419838689]
+position = Vector2(-40, -15)
+shape = SubResource("RectangleShape2D_i60o8")
+
+[node name="ChickenRoost0" parent="." unique_id=1178654223 instance=ExtResource("7_at5dv")]
+position = Vector2(65, 193)
+
+[node name="ChickenRoost1" parent="." unique_id=2089098102 instance=ExtResource("7_at5dv")]
+position = Vector2(1068, 194)
+scale = Vector2(-1, 1)
+
+[node name="ChickenRoost2" parent="." unique_id=1537603867 instance=ExtResource("7_at5dv")]
+position = Vector2(56, 350)
+
+[node name="ChickenRoost3" parent="." unique_id=310547418 instance=ExtResource("7_at5dv")]
+position = Vector2(1060, 338)
+scale = Vector2(-1, 1)
+
+[node name="GameMenu" parent="." unique_id=261793984 instance=ExtResource("7_jcd4p")]
+visible = false
+offset_left = 259.0
+offset_top = 67.0
+offset_right = 259.0
+offset_bottom = 67.0

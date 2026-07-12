@@ -12,15 +12,14 @@ func _ready() -> void:
 
 func _on_body_entered(body) -> void:
 	if body.is_in_group("egg"):
-		print("Enter egg")
 		if player_check and body.can_catch:
-			body.queue_free()
+			body.catch()
 		body.can_catch = false;
 
 func _on_body_exited(body) -> void:
 	pass
 
-func spawn_egg(pos: Vector2):
+func spawn_egg(pos: Vector2) -> Node2D:
 	# Создаем экземпляр (копию) шаблона
 	var egg = egg_prefab.instantiate()
 	get_parent().add_child(egg)
@@ -34,6 +33,7 @@ func spawn_egg(pos: Vector2):
 	# egg.call_deferred("set_global_position", pos)
 	# egg.call_deferred("set_scale", Vector2.ONE)
 	# Добавляем в дерево сцены как дочерний узел
+	return egg
 
 func _on_area_entered(body) -> void:
 	if body.is_in_group("player"):

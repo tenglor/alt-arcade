@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Node2D
 
 @export var object: Node2D
@@ -22,6 +22,7 @@ func _process(delta: float) -> void:
 	queue_redraw()
 
 func _draw():
+	pass
 	for i in range(points.size()):
 		var p = points[i]
 		draw_circle(p, 8, Color.RED)     # Отрисовка каждой точки

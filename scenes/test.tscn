@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bhys1fcyputuk" path="res://core/input/Input.tscn" id="3_iyx0m"]
 [ext_resource type="PackedScene" uid="uid://dth0wkql67bja" path="res://objects/chicken_roost/chicken_roost.tscn" id="7_at5dv"]
 [ext_resource type="PackedScene" uid="uid://bvjfderfpdtx1" path="res://ui/game_menu/game_menu.tscn" id="7_jcd4p"]
+[ext_resource type="PackedScene" uid="uid://bqkeh3b8bismv" path="res://ui/hud/hud.tscn" id="8_jcd4p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i60o8"]
 size = Vector2(1153, 20)
@@ -17,6 +18,8 @@ script = ExtResource("1_at5dv")
 [node name="Player" parent="." unique_id=766519368 instance=ExtResource("2_bl13t")]
 position = Vector2(573, 643)
 scale = Vector2(1.78, 1.78)
+
+[node name="HUD" parent="." unique_id=1193212197 instance=ExtResource("8_jcd4p")]
 
 [node name="EggGenerator" type="Node2D" parent="." unique_id=478956919 node_paths=PackedStringArray("chicken_roosts")]
 position = Vector2(990.99994, 368.00003)
