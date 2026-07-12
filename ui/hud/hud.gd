@@ -17,6 +17,9 @@ func crush_egg(i: int) -> void:
 	if i < max_hp:
 		var texture_rect = get_node("HPContainer/TextureRect" + str(i))
 		texture_rect.texture = broken_egg
+	if i == max_hp - 1:
+		Global.load_scene("res://ui/main_menu/main_menu.tscn")
+
 
 
 

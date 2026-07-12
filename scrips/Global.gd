@@ -1,5 +1,6 @@
 extends Node
 
+var test_scene = "res://scenes/test/test.tscn"
 func load_scene(target_scene) -> void:
 	# var target_scene = "res://scenes/test.tscn"
 	var old_room = get_tree().current_scene

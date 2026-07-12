@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 func _on_new_game_button_pressed() -> void:
-	Global.load_scene("res://scenes/test.tscn")
+	Global.load_scene(Global.test_scene)
 	# var target_scene = "res://scenes/test.tscn"
 	# var old_room = get_tree().current_scene
 

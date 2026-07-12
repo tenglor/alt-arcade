@@ -5,6 +5,7 @@ var is_menu_open: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	DifficultyManager.init()
 	pass # Replace with function body.
 
 func _input(event: InputEvent) -> void:

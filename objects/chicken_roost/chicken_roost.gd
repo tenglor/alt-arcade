@@ -25,8 +25,6 @@ func spawn_egg(pos: Vector2) -> Node2D:
 	get_parent().add_child(egg)
 	# Устанавливаем его позицию
 	egg.position = pos
-	egg.apply_central_impulse(Vector2(10, 0))
-	egg.apply_torque_impulse(500.0)
 	# egg.scale = Vector2.ONE
 	# egg.global_scale = Vector2.ONE
 	# egg.call_deferred("set_transform", Transform2D.IDENTITY)
@@ -34,6 +32,9 @@ func spawn_egg(pos: Vector2) -> Node2D:
 	# egg.call_deferred("set_scale", Vector2.ONE)
 	# Добавляем в дерево сцены как дочерний узел
 	return egg
+
+func get_roost_rotation() -> float:
+	return $StaticBody2D.rotation_degrees
 
 func _on_area_entered(body) -> void:
 	if body.is_in_group("player"):

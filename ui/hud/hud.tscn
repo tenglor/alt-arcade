@@ -14,10 +14,10 @@ offset_bottom = 639.0
 text = "Score: 0"
 
 [node name="HPContainer" type="HBoxContainer" parent="." unique_id=346269476]
-offset_left = 656.0
-offset_top = 1.0
-offset_right = 1110.0
-offset_bottom = 56.0
+offset_left = 747.0
+offset_top = 2.0
+offset_right = 1201.0
+offset_bottom = 57.0
 
 [node name="TextureRect0" type="TextureRect" parent="HPContainer" unique_id=559572103]
 layout_mode = 2
