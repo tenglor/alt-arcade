@@ -3,6 +3,7 @@ extends RigidBody2D
 var can_catch = true
 
 var sharp = preload("res://objects/egg/egg_shard.tscn")
+signal crashed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +13,8 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("floor"):
-		call_deferred("spawn_sharps")
+		# call_deferred("spawn_sharps")
+		spawn_sharps()
 
 func spawn_sharps() -> void:
 		var left = sharp.instantiate()
@@ -27,6 +29,7 @@ func spawn_sharps() -> void:
 		var right_shape = load("res://objects/egg/egg_shape_right.tres")
 		left.setup($Sprite2D, left_texture, left_shape, position + Vector2(0, -1))
 		right.setup($Sprite2D,right_texture, right_shape, position + Vector2(0, -1))
+		crashed.emit()
 		queue_free()
 
 

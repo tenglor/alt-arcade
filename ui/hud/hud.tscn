@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bqkeh3b8bismv"]
+
+[ext_resource type="Script" uid="uid://cqyeitaae8al3" path="res://ui/hud/hud.gd" id="1_xmswo"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1193212197]
+script = ExtResource("1_xmswo")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=2002619382]
+offset_right = 219.0
+offset_bottom = 69.0
+text = "Ты чё, пёс!"
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1817301195]
+offset_left = 846.0
+offset_top = 3.0
+offset_right = 1151.0
+offset_bottom = 46.0
+text = "Score: 0"
