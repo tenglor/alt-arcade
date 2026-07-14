@@ -4,10 +4,11 @@ extends CanvasLayer
 @onready var score_label = $ScoreLabel
 var hp: int = 0
 @export var max_hp: int = 3
+var scene;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	scene = get_parent()
 
 func set_score(score: int) -> void:
 	score_label.set_text("Score: " + str(score))
@@ -18,7 +19,7 @@ func crush_egg(i: int) -> void:
 		var texture_rect = get_node("HPContainer/TextureRect" + str(i))
 		texture_rect.texture = broken_egg
 	if i == max_hp - 1:
-		Global.load_scene("res://ui/main_menu/main_menu.tscn")
+		scene.open_score_dialog()
 
 
 

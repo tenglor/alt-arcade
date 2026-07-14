@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bhys1fcyputuk" path="res://core/input/Input.tscn" id="7_xm0ii"]
 [ext_resource type="PackedScene" uid="uid://dth0wkql67bja" path="res://objects/chicken_roost/chicken_roost.tscn" id="8_bg4ew"]
 [ext_resource type="PackedScene" uid="uid://bvjfderfpdtx1" path="res://ui/game_menu/game_menu.tscn" id="9_vq3si"]
+[ext_resource type="PackedScene" uid="uid://djevt65220j4k" path="res://ui/end_game_menu/end_game_dialog.tscn" id="10_saoeg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i60o8"]
 size = Vector2(1153, 37)
@@ -68,3 +69,10 @@ offset_left = 259.0
 offset_top = 67.0
 offset_right = 259.0
 offset_bottom = 67.0
+
+[node name="EndGameDialog" parent="." unique_id=1723092759 instance=ExtResource("10_saoeg")]
+visible = false
+offset_left = 584.0
+offset_top = 293.0
+offset_right = 584.0
+offset_bottom = 293.0

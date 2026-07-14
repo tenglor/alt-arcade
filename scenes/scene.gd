@@ -1,6 +1,7 @@
 extends Node
 
 @onready var menu: Control = $GameMenu
+@onready var score: Control = $EndGameDialog
 var is_menu_open: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -14,6 +15,11 @@ func _input(event: InputEvent) -> void:
 			close_menu()
 		else:
 			open_menu()
+
+func open_score_dialog() -> void:
+	score.visible = true
+	get_tree().paused = true  # Пауза игры
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)  # Показать курсор
 
 func open_menu() -> void:
 	menu.visible = true

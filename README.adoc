@@ -1,5 +1,13 @@
 = Игра
 
+== Пароль
+vMPFuzAMHx3PZXY
+
+https://tenglor.itch.io/egg-maid?password=vMPFuzAMHx3PZXY
+
+== Пожелания
+Хитбоксы странные и неплохо бы добавить управление с клавы/геймпада.
+
 == Путевая карта
 
 - Геймплей
