@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://dth0wkql67bja" path="res://objects/chicken_roost/chicken_roost.tscn" id="8_bg4ew"]
 [ext_resource type="PackedScene" uid="uid://bvjfderfpdtx1" path="res://ui/game_menu/game_menu.tscn" id="9_vq3si"]
 [ext_resource type="PackedScene" uid="uid://djevt65220j4k" path="res://ui/end_game_menu/end_game_dialog.tscn" id="10_saoeg"]
-[ext_resource type="PackedScene" uid="uid://di2et85cyfr7q" path="res://ui/tutorial/tutorial.tscn" id="11_we7ej"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i60o8"]
 size = Vector2(1153, 37)
@@ -54,14 +53,14 @@ shape = SubResource("RectangleShape2D_i60o8")
 position = Vector2(65, 193)
 
 [node name="ChickenRoost1" parent="." unique_id=2089098102 instance=ExtResource("8_bg4ew")]
-position = Vector2(1068, 194)
+position = Vector2(1078, 194)
 scale = Vector2(-1, 1)
 
 [node name="ChickenRoost2" parent="." unique_id=1537603867 instance=ExtResource("8_bg4ew")]
-position = Vector2(56, 350)
+position = Vector2(64, 350)
 
 [node name="ChickenRoost3" parent="." unique_id=310547418 instance=ExtResource("8_bg4ew")]
-position = Vector2(1060, 338)
+position = Vector2(1077, 350)
 scale = Vector2(-1, 1)
 
 [node name="GameMenu" parent="." unique_id=261793984 instance=ExtResource("9_vq3si")]
@@ -77,5 +76,3 @@ offset_left = 584.0
 offset_top = 293.0
 offset_right = 584.0
 offset_bottom = 293.0
-
-[node name="Tutorial" parent="." unique_id=537401848 instance=ExtResource("11_we7ej")]
