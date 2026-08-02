@@ -22,7 +22,7 @@ func set_sprite(quarter):
 	current_shape.disabled = false
 
 
-func quarter_clicked(quarter)-> void:
+func quarter_clicked(quarter: int)-> void:
 	print("Клик в четверти: ", quarter)
 	set_sprite(quarter)
 

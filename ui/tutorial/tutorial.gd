@@ -13,11 +13,13 @@ func _ready() -> void:
 	var game_name = ProjectSettings.get_setting("application/config/name")
 	tutorial_steps = [
 		{"text": "Добро пожаловать в игру \"{game_name}\"".format({"game_name": game_name})},
-		{"text": "Это Мария. Её задача - прислуживать гарему коледи одного высокопоставленного рустермена (roosterman)"},
+		{"text": "Это Мария. Её задача - прислуживать гарему коледи \nодного высокопоставленного рустермена (roosterman)"},
 		{"text": "Не беспокойтесь. Ей хорошо платят, а коледи и владелец гарема относятся к ней уважительно"},
 		{"text": "Однажды я расскажу об этом историю"},
 		{"text": "Это ваше рабочее место. Коледи здесь иногда отдыхают"},
-		{"text": "Одна из коледи снесла яйцо. Нужно его поймать"}
+		{"text": "Одна из коледи снесла яйцо. Нужно его поймать"},
+		{"text": "Экран поделен на четыре части. \nЧтобы сказать Марии поймать верхнее левое яйцо, \nнадо нажать на левую верхнюю часть экрана. \nПопробуйте"},
+		{"text": "Тирлим бом-бом"}
 	]
 
 	var horizontal_line = Line2D.new()
@@ -57,7 +59,26 @@ func _ready() -> void:
 	dialog = show_message(tutorial_steps[4])
 	await dialog.confirmed
 
-	roost.get_node("Perch0").
+	var egg = roost.get_node("Perch0").spawn_egg()
+	add_child(egg)
+
+	dialog = show_message(tutorial_steps[5])
+	await dialog.confirmed
+
+	click_area_show.visible = true
+
+	dialog = show_message(tutorial_steps[6])
+	await dialog.confirmed
+
+	while true:
+		var pressed_index: int = await player.quarter_clicked
+		if pressed_index == 0:
+			break
+
+	dialog = show_message(tutorial_steps[6])
+	await dialog.confirmed
+
+
 
 func show_message(item):
 	var dialog = AcceptDialog.new()

@@ -24,12 +24,6 @@ func spawn_egg() -> Node2D:
 	var egg = egg_prefab.instantiate()
 	# Устанавливаем его позицию
 	egg.position = position
-	# egg.scale = Vector2.ONE
-	# egg.global_scale = Vector2.ONE
-	# egg.call_deferred("set_transform", Transform2D.IDENTITY)
-	# egg.call_deferred("set_global_position", pos)
-	# egg.call_deferred("set_scale", Vector2.ONE)
-	# Добавляем в дерево сцены как дочерний узел
 	return egg
 
 func get_roost_rotation() -> float:
