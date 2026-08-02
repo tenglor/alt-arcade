@@ -1,10 +1,11 @@
 extends Node2D
 
-@export var chicken_roosts: Array[Node2D]
+@onready var chicken_roosts: Array[Node2D]
 @onready var score: int = 0
 @onready var hud: HUD = $"../HUD"
 # var hud: HUD
 @onready var hp_counter = 0
+@onready var roost = $"../Roost"
 
 var rng = RandomNumberGenerator.new()
 var is_timeout = false
@@ -14,10 +15,16 @@ func _ready() -> void:
 	# hud = get_parent().get_child("HUD")
 	hud.set_score(score)
 
+	chicken_roosts.append(roost.get_node("Perch0"))
+	chicken_roosts.append(roost.get_node("Perch1"))
+	chicken_roosts.append(roost.get_node("Perch2"))
+	chicken_roosts.append(roost.get_node("Perch3"))
+
 func _on_timer_timeout():
 	var i = rng.randi_range(0, 3)
 	var chicken = chicken_roosts[i]
-	var egg = chicken.spawn_egg(chicken.position)
+	var egg = chicken.spawn_egg()
+	get_parent().add_child(egg)
 	egg.crashed.connect(_on_egg_crashed)
 	egg.caught.connect(_on_egg_caught)
 	var roost_rotation = chicken.get_roost_rotation()

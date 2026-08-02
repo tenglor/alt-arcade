@@ -62,6 +62,7 @@ animations = [{
 size = Vector2(60.75, 39.9375)
 
 [node name="Player" type="Node2D" unique_id=766519368 groups=["player"]]
+scale = Vector2(1.78, 1.78)
 script = ExtResource("1_ilk7j")
 
 [node name="Controller" type="Node2D" parent="." unique_id=457881007]

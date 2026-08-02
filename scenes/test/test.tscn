@@ -7,9 +7,9 @@
 [ext_resource type="Script" uid="uid://b0mn4fhhvmr7r" path="res://scrips/egg_generator.gd" id="5_2dgve"]
 [ext_resource type="Script" uid="uid://du4y6h7xfqd4n" path="res://core/move_object.gd" id="6_x4ubh"]
 [ext_resource type="PackedScene" uid="uid://bhys1fcyputuk" path="res://core/input/Input.tscn" id="7_xm0ii"]
-[ext_resource type="PackedScene" uid="uid://dth0wkql67bja" path="res://objects/chicken_roost/chicken_roost.tscn" id="8_bg4ew"]
 [ext_resource type="PackedScene" uid="uid://bvjfderfpdtx1" path="res://ui/game_menu/game_menu.tscn" id="9_vq3si"]
 [ext_resource type="PackedScene" uid="uid://djevt65220j4k" path="res://ui/end_game_menu/end_game_dialog.tscn" id="10_saoeg"]
+[ext_resource type="PackedScene" uid="uid://8cexe37khmty" path="res://objects/roost/roost.tscn" id="10_we7ej"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i60o8"]
 size = Vector2(1153, 37)
@@ -24,16 +24,14 @@ texture = ExtResource("2_saoeg")
 
 [node name="Player" parent="." unique_id=766519368 instance=ExtResource("3_we7ej")]
 position = Vector2(573, 643)
-scale = Vector2(1.78, 1.78)
 
 [node name="HUD" parent="." unique_id=1193212197 instance=ExtResource("4_xi5sv")]
 
-[node name="EggGenerator" type="Node2D" parent="." unique_id=478956919 node_paths=PackedStringArray("chicken_roosts")]
+[node name="EggGenerator" type="Node2D" parent="." unique_id=478956919]
 position = Vector2(990.99994, 368.00003)
 rotation = -0.34233928
 scale = Vector2(3.41, 0.425)
 script = ExtResource("5_2dgve")
-chicken_roosts = [NodePath("../ChickenRoost0"), NodePath("../ChickenRoost1"), NodePath("../ChickenRoost2"), NodePath("../ChickenRoost3")]
 
 [node name="MovePlayer" type="Node2D" parent="." unique_id=2060950705 node_paths=PackedStringArray("object")]
 script = ExtResource("6_x4ubh")
@@ -49,20 +47,6 @@ collision_mask = 4
 position = Vector2(-40, -23.5)
 shape = SubResource("RectangleShape2D_i60o8")
 
-[node name="ChickenRoost0" parent="." unique_id=1178654223 instance=ExtResource("8_bg4ew")]
-position = Vector2(65, 193)
-
-[node name="ChickenRoost1" parent="." unique_id=2089098102 instance=ExtResource("8_bg4ew")]
-position = Vector2(1078, 194)
-scale = Vector2(-1, 1)
-
-[node name="ChickenRoost2" parent="." unique_id=1537603867 instance=ExtResource("8_bg4ew")]
-position = Vector2(64, 350)
-
-[node name="ChickenRoost3" parent="." unique_id=310547418 instance=ExtResource("8_bg4ew")]
-position = Vector2(1077, 350)
-scale = Vector2(-1, 1)
-
 [node name="GameMenu" parent="." unique_id=261793984 instance=ExtResource("9_vq3si")]
 visible = false
 offset_left = 259.0
@@ -76,3 +60,5 @@ offset_left = 584.0
 offset_top = 293.0
 offset_right = 584.0
 offset_bottom = 293.0
+
+[node name="Roost" parent="." unique_id=1055971496 instance=ExtResource("10_we7ej")]

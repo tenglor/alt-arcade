@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba4vk6iyjhgpy"
-path="res://.godot/imported/roost2.png-6c5661a381c61900daafb1f3082639d4.ctex"
+uid="uid://erirrpbahj4n"
+path="res://.godot/imported/perch.png-1e40f51b65e826639c39ca8bbee17542.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/chicken_roost/roost2.png"
-dest_files=["res://.godot/imported/roost2.png-6c5661a381c61900daafb1f3082639d4.ctex"]
+source_file="res://objects/perch/perch.png"
+dest_files=["res://.godot/imported/perch.png-1e40f51b65e826639c39ca8bbee17542.ctex"]
 
 [params]
 

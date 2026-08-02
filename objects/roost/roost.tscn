@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://8cexe37khmty"]
+
+[ext_resource type="PackedScene" uid="uid://dth0wkql67bja" path="res://objects/perch/perch.tscn" id="1_bcdja"]
+
+[node name="Roost" type="Node2D" unique_id=1055971496]
+
+[node name="Perch0" parent="." unique_id=1178654223 instance=ExtResource("1_bcdja")]
+position = Vector2(65, 193)
+
+[node name="Perch1" parent="." unique_id=1021595331 instance=ExtResource("1_bcdja")]
+position = Vector2(1078, 194)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+
+[node name="Perch2" parent="." unique_id=1674106778 instance=ExtResource("1_bcdja")]
+position = Vector2(64, 350)
+
+[node name="Perch3" parent="." unique_id=863302997 instance=ExtResource("1_bcdja")]
+position = Vector2(1077, 350)
+rotation = 3.1415927
+scale = Vector2(1, -1)

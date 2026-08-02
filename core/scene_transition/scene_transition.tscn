@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwa5peg7x6hj2"]
+[gd_scene format=3 uid="uid://cwa5peg7x6hj2"]
 
 [ext_resource type="Script" uid="uid://dts5iuass3sjf" path="res://core/scene_transition/scene_transition.gd" id="1_eqmke"]
 
-[node name="SceneTransition" type="CanvasLayer"]
+[node name="SceneTransition" type="CanvasLayer" unique_id=1994446500]
 script = ExtResource("1_eqmke")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=943621526]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

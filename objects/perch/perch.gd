@@ -19,12 +19,11 @@ func _on_body_entered(body) -> void:
 func _on_body_exited(body) -> void:
 	pass
 
-func spawn_egg(pos: Vector2) -> Node2D:
+func spawn_egg() -> Node2D:
 	# Создаем экземпляр (копию) шаблона
 	var egg = egg_prefab.instantiate()
-	get_parent().add_child(egg)
 	# Устанавливаем его позицию
-	egg.position = pos
+	egg.position = position
 	# egg.scale = Vector2.ONE
 	# egg.global_scale = Vector2.ONE
 	# egg.call_deferred("set_transform", Transform2D.IDENTITY)
