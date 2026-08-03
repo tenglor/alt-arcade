@@ -8,20 +8,19 @@ var current_step = 0
 @onready var roost_preload = preload("res://objects/roost/roost.tscn")
 
 @onready var click_area_show = $ClickAreaShow
-@onready var input = $Input
 
 func _ready() -> void:
 	var game_name = ProjectSettings.get_setting("application/config/name")
 	tutorial_steps = [
 		{"text": "Добро пожаловать в игру \"{game_name}\"".format({"game_name": game_name})},
-		{"text": "Это Мария. Её задача - прислуживать гарему коледи \nодного высокопоставленного рустермена (roosterman)"},
-		{"text": "Не беспокойтесь. Ей хорошо платят, а коледи и владелец гарема относятся к ней уважительно"},
+		{"text": "Это Мария.\nНекий пемуж нанял её,\nчтобы она прислуживала его кудевам"},
+		{"text": "Не беспокойтесь. Ей хорошо платят, \nа коледи и владелец гарема относятся к ней уважительно"},
 		{"text": "Однажды я расскажу об этом историю"},
 		{"text": "Это ваше рабочее место. Коледи здесь иногда отдыхают"},
 		{"text": "Одна из коледи снесла яйцо. Нужно его поймать"},
 		{"text": "Экран поделен на четыре части. \nЧтобы сказать Марии поймать верхнее левое яйцо, \nнадо нажать на левую верхнюю часть экрана. \nПопробуйте"},
 		{"text": "Как вы видете, Мария переместилась, \nчтобы поймать яйцо. \nПодождем, когда оно скатится"},
-		{"text": "Как вы видете, Мария переместилась, \nчтобы поймать яйцо. \nПодождем, когда оно скатится"}
+		{"text": "Поздравляю! Вы поймали яйцо. Теперь вы чёрт!"}
 	]
 	var step_i = 0
 
@@ -85,6 +84,8 @@ func _ready() -> void:
 	step_i+=1
 	await dialog.confirmed
 
+
+	var input = player.get_node("Controller")
 	while true:
 		var pressed_index: int = await input.quarter_clicked
 		if pressed_index == 0:
@@ -95,6 +96,16 @@ func _ready() -> void:
 	await dialog.confirmed
 	egg.process_mode = Node.PROCESS_MODE_INHERIT
 
+	input.input_enable = false
+
+	await egg.caught
+
+	input.input_enable = true
+
+	dialog = show_message(tutorial_steps[step_i])
+	step_i += 1
+	await dialog.confirmed
+
 
 
 func show_message(item):
@@ -102,6 +113,7 @@ func show_message(item):
 	dialog.title = "Обучение"
 	dialog.dialog_text = item.text
 	dialog.ok_button_text = "Да"
+	dialog.get_label().horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	add_child(dialog)
 	dialog.popup_centered()
 	return dialog

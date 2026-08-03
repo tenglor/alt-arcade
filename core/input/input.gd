@@ -2,6 +2,7 @@ extends Node2D
 
 var quarter := 0
 
+var input_enable = true
 
 signal quarter_clicked(quarter_number)
 
@@ -10,6 +11,8 @@ func _ready() -> void:
 	set_process_input(true)
 
 func _input(event):
+	if !input_enable:
+		return
 	# Обрабатываем только события нажатия левой кнопки мыши
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var click_pos = event.position           # Координаты клика (в пикселях)
