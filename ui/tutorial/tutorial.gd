@@ -73,32 +73,27 @@ func _ready() -> void:
 
 	var egg = roost.get_node("Perch0").spawn_egg()
 	add_child(egg)
-	PauseManager.pause_game()
+	egg.process_mode = Node.PROCESS_MODE_DISABLED
 
 	dialog = show_message(tutorial_steps[step_i])
 	step_i+=1
-	PauseManager.add_ignore_pause(dialog)
 	await dialog.confirmed
 
 	click_area_show.visible = true
-	PauseManager.add_ignore_pause(click_area_show)
 
 	dialog = show_message(tutorial_steps[step_i])
 	step_i+=1
-	PauseManager.add_ignore_pause(dialog)
 	await dialog.confirmed
 
-	PauseManager.add_ignore_pause(input)
 	while true:
 		var pressed_index: int = await input.quarter_clicked
 		if pressed_index == 0:
 			break
-	PauseManager.remove_ignore_pause(input)
 
 	dialog = show_message(tutorial_steps[step_i])
-	PauseManager.add_ignore_pause(dialog)
 	step_i += 1
 	await dialog.confirmed
+	egg.process_mode = Node.PROCESS_MODE_INHERIT
 
 
 
