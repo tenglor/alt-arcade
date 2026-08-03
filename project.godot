@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 Global="*uid://hlvr3vf0q2np"
 DifficultyManager="*uid://bh6e0o6smxngk"
+PauseManager="*uid://b2e766447dgfr"
 
 [dotnet]
 

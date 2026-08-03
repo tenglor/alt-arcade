@@ -40,9 +40,11 @@ func _ready() -> void:
 	dialog = show_message(tutorial_steps[0])
 	await dialog.confirmed
 
+	await get_tree().create_timer(0.5).timeout
 	var player = player_preload.instantiate()
 	add_child(player)
 	player.position = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y)
+	await get_tree().create_timer(1.5).timeout
 
 	dialog = show_message(tutorial_steps[1])
 	await dialog.confirmed
@@ -53,30 +55,36 @@ func _ready() -> void:
 	dialog = show_message(tutorial_steps[3])
 	await dialog.confirmed
 
+	await get_tree().create_timer(0.5).timeout
 	var roost = roost_preload.instantiate()
 	add_child(roost)
+	await get_tree().create_timer(1.5).timeout
 
 	dialog = show_message(tutorial_steps[4])
 	await dialog.confirmed
 
 	var egg = roost.get_node("Perch0").spawn_egg()
 	add_child(egg)
+	PauseManager.pause_game()
 
 	dialog = show_message(tutorial_steps[5])
+	PauseManager.add_ignore_pause(dialog)
 	await dialog.confirmed
 
 	click_area_show.visible = true
+	PauseManager.add_ignore_pause(click_area_show)
 
 	dialog = show_message(tutorial_steps[6])
+	PauseManager.add_ignore_pause(dialog)
 	await dialog.confirmed
 
-	while true:
-		var pressed_index: int = await player.quarter_clicked
-		if pressed_index == 0:
-			break
+	# while true:
+	# 	var pressed_index: int = await player.quarter_clicked
+	# 	if pressed_index == 0:
+	# 		break
 
-	dialog = show_message(tutorial_steps[6])
-	await dialog.confirmed
+	# dialog = show_message(tutorial_steps[6])
+	# await dialog.confirmed
 
 
 

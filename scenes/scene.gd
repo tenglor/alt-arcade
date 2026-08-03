@@ -18,20 +18,17 @@ func _input(event: InputEvent) -> void:
 
 func open_score_dialog() -> void:
 	score.visible = true
-	get_tree().paused = true  # Пауза игры
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)  # Показать курсор
+	PauseManager.pause_game()
 
 func open_menu() -> void:
 	menu.visible = true
 	is_menu_open = true
-	get_tree().paused = true  # Пауза игры
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)  # Показать курсор
+	PauseManager.pause_game()
 
 func close_menu() -> void:
 	menu.visible = false
 	is_menu_open = false
-	get_tree().paused = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)  # Скрыть курсор
+	PauseManager.resume_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
