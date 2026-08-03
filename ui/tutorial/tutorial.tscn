@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://caj2j8kv3y28w" path="res://ui/tutorial/tutorial.gd" id="1_tkdws"]
 [ext_resource type="Texture2D" uid="uid://brvjaah0ae7fh" path="res://scenes/test/background.png" id="2_8pb1l"]
+[ext_resource type="PackedScene" uid="uid://bhys1fcyputuk" path="res://core/input/Input.tscn" id="3_104xa"]
 
 [node name="Tutorial" type="Node2D" unique_id=1707458278]
 script = ExtResource("1_tkdws")
@@ -21,3 +22,6 @@ color = Color(0.6156863, 0.23529412, 0.32156864, 0.56078434)
 position = Vector2(577.49994, 252.18753)
 scale = Vector2(0.39910156, 0.40332273)
 texture = ExtResource("2_8pb1l")
+
+[node name="Input" parent="." unique_id=2142687075 instance=ExtResource("3_104xa")]
+position = Vector2(59, 398)

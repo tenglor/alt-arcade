@@ -8,6 +8,7 @@ var current_step = 0
 @onready var roost_preload = preload("res://objects/roost/roost.tscn")
 
 @onready var click_area_show = $ClickAreaShow
+@onready var input = $Input
 
 func _ready() -> void:
 	var game_name = ProjectSettings.get_setting("application/config/name")
@@ -19,8 +20,10 @@ func _ready() -> void:
 		{"text": "Это ваше рабочее место. Коледи здесь иногда отдыхают"},
 		{"text": "Одна из коледи снесла яйцо. Нужно его поймать"},
 		{"text": "Экран поделен на четыре части. \nЧтобы сказать Марии поймать верхнее левое яйцо, \nнадо нажать на левую верхнюю часть экрана. \nПопробуйте"},
-		{"text": "Тирлим бом-бом"}
+		{"text": "Как вы видете, Мария переместилась, \nчтобы поймать яйцо. \nПодождем, когда оно скатится"},
+		{"text": "Как вы видете, Мария переместилась, \nчтобы поймать яйцо. \nПодождем, когда оно скатится"}
 	]
+	var step_i = 0
 
 	var horizontal_line = Line2D.new()
 	horizontal_line.width = 2
@@ -37,7 +40,8 @@ func _ready() -> void:
 	click_area_show.add_child(vertical_line)
 
 	var dialog
-	dialog = show_message(tutorial_steps[0])
+	dialog = show_message(tutorial_steps[step_i])
+	step_i += 1
 	await dialog.confirmed
 
 	await get_tree().create_timer(0.5).timeout
@@ -46,13 +50,16 @@ func _ready() -> void:
 	player.position = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y)
 	await get_tree().create_timer(1.5).timeout
 
-	dialog = show_message(tutorial_steps[1])
+	dialog = show_message(tutorial_steps[step_i])
+	step_i += 1
 	await dialog.confirmed
 
-	dialog = show_message(tutorial_steps[2])
+	dialog = show_message(tutorial_steps[step_i])
+	step_i+=1
 	await dialog.confirmed
 
-	dialog = show_message(tutorial_steps[3])
+	dialog = show_message(tutorial_steps[step_i])
+	step_i+=1
 	await dialog.confirmed
 
 	await get_tree().create_timer(0.5).timeout
@@ -60,31 +67,38 @@ func _ready() -> void:
 	add_child(roost)
 	await get_tree().create_timer(1.5).timeout
 
-	dialog = show_message(tutorial_steps[4])
+	dialog = show_message(tutorial_steps[step_i])
+	step_i+=1
 	await dialog.confirmed
 
 	var egg = roost.get_node("Perch0").spawn_egg()
 	add_child(egg)
 	PauseManager.pause_game()
 
-	dialog = show_message(tutorial_steps[5])
+	dialog = show_message(tutorial_steps[step_i])
+	step_i+=1
 	PauseManager.add_ignore_pause(dialog)
 	await dialog.confirmed
 
 	click_area_show.visible = true
 	PauseManager.add_ignore_pause(click_area_show)
 
-	dialog = show_message(tutorial_steps[6])
+	dialog = show_message(tutorial_steps[step_i])
+	step_i+=1
 	PauseManager.add_ignore_pause(dialog)
 	await dialog.confirmed
 
-	# while true:
-	# 	var pressed_index: int = await player.quarter_clicked
-	# 	if pressed_index == 0:
-	# 		break
+	PauseManager.add_ignore_pause(input)
+	while true:
+		var pressed_index: int = await input.quarter_clicked
+		if pressed_index == 0:
+			break
+	PauseManager.remove_ignore_pause(input)
 
-	# dialog = show_message(tutorial_steps[6])
-	# await dialog.confirmed
+	dialog = show_message(tutorial_steps[step_i])
+	PauseManager.add_ignore_pause(dialog)
+	step_i += 1
+	await dialog.confirmed
 
 
 
