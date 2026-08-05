@@ -4,6 +4,8 @@ extends Node2D
 @onready var basket: Area2D = $Basket
 @onready var current_shape: CollisionShape2D = $Basket/shape0
 
+@export var positions: Array[Node2D]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var detector = get_node("Controller")
@@ -25,6 +27,10 @@ func set_sprite(quarter):
 func quarter_clicked(quarter: int)-> void:
 	print("Клик в четверти: ", quarter)
 	set_sprite(quarter)
+	if positions.size() == 4:
+		self.position = positions[quarter].position
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

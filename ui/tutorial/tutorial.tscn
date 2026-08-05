@@ -2,6 +2,14 @@
 
 [ext_resource type="Script" uid="uid://caj2j8kv3y28w" path="res://ui/tutorial/tutorial.gd" id="1_tkdws"]
 [ext_resource type="Texture2D" uid="uid://brvjaah0ae7fh" path="res://scenes/test/background.png" id="2_8pb1l"]
+[ext_resource type="Texture2D" uid="uid://c22kbh1y6veip" path="res://effects/sparcles/sparcle1.png" id="3_104xa"]
+[ext_resource type="PackedScene" uid="uid://t0c05bt1vvyc" path="res://actors/player/player.tscn" id="4_xip1d"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ilxo7"]
+emission_shape_scale = Vector3(0.2, 0.2, 0.2)
+angle_min = -317.4
+angle_max = 394.80002
+gravity = Vector3(0, 98, 0)
 
 [node name="Tutorial" type="Node2D" unique_id=1707458278]
 script = ExtResource("1_tkdws")
@@ -21,3 +29,30 @@ color = Color(0.6156863, 0.23529412, 0.32156864, 0.56078434)
 position = Vector2(577.49994, 252.18753)
 scale = Vector2(0.39910156, 0.40332273)
 texture = ExtResource("2_8pb1l")
+
+[node name="Tada" type="GPUParticles2D" parent="." unique_id=203545184]
+z_index = 5
+emitting = false
+amount = 20
+texture = ExtResource("3_104xa")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ilxo7")
+
+[node name="PositionMarker0" type="Node2D" parent="." unique_id=375301304]
+position = Vector2(500, 640)
+
+[node name="PositionMarker1" type="Node2D" parent="." unique_id=616735836]
+position = Vector2(650, 640)
+
+[node name="PositionMarker2" type="Node2D" parent="." unique_id=237177252]
+position = Vector2(500, 640)
+
+[node name="PositionMarker3" type="Node2D" parent="." unique_id=226950279]
+position = Vector2(650, 640)
+
+[node name="Player" parent="." unique_id=650936051 node_paths=PackedStringArray("positions") instance=ExtResource("4_xip1d")]
+visible = false
+position = Vector2(570, 638)
+positions = [NodePath("../PositionMarker0"), NodePath("../PositionMarker1"), NodePath("../PositionMarker2"), NodePath("../PositionMarker3")]

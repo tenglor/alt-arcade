@@ -8,6 +8,7 @@ var current_step = 0
 @onready var roost_preload = preload("res://objects/roost/roost.tscn")
 
 @onready var click_area_show = $ClickAreaShow
+@onready var tada = $Tada
 
 func _ready() -> void:
 	var game_name = ProjectSettings.get_setting("application/config/name")
@@ -44,9 +45,11 @@ func _ready() -> void:
 	await dialog.confirmed
 
 	await get_tree().create_timer(0.5).timeout
-	var player = player_preload.instantiate()
-	add_child(player)
-	player.position = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y)
+	var player = get_node("Player")
+	player.visible = true
+	# player.position = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y)
+	tada.position = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y / 2)
+	tada.restart()
 	await get_tree().create_timer(1.5).timeout
 
 	dialog = show_message(tutorial_steps[step_i])
@@ -90,6 +93,8 @@ func _ready() -> void:
 		var pressed_index: int = await input.quarter_clicked
 		if pressed_index == 0:
 			break
+
+	click_area_show.visible = false
 
 	dialog = show_message(tutorial_steps[step_i])
 	step_i += 1

@@ -61,7 +61,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p07ip"]
 size = Vector2(60.75, 39.9375)
 
-[node name="Player" type="Node2D" unique_id=766519368 groups=["player"]]
+[node name="Player" type="Node2D" unique_id=650936051 groups=["player"]]
 scale = Vector2(1.78, 1.78)
 script = ExtResource("1_ilk7j")
 
@@ -103,3 +103,5 @@ disabled = true
 position = Vector2(48, -77)
 shape = SubResource("RectangleShape2D_p07ip")
 disabled = true
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=2109216484]

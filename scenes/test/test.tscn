@@ -5,8 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://t0c05bt1vvyc" path="res://actors/player/player.tscn" id="3_we7ej"]
 [ext_resource type="PackedScene" uid="uid://bqkeh3b8bismv" path="res://ui/hud/hud.tscn" id="4_xi5sv"]
 [ext_resource type="Script" uid="uid://b0mn4fhhvmr7r" path="res://scrips/egg_generator.gd" id="5_2dgve"]
-[ext_resource type="Script" uid="uid://du4y6h7xfqd4n" path="res://core/move_object.gd" id="6_x4ubh"]
-[ext_resource type="PackedScene" uid="uid://bhys1fcyputuk" path="res://core/input/Input.tscn" id="7_xm0ii"]
 [ext_resource type="PackedScene" uid="uid://bvjfderfpdtx1" path="res://ui/game_menu/game_menu.tscn" id="9_vq3si"]
 [ext_resource type="PackedScene" uid="uid://djevt65220j4k" path="res://ui/end_game_menu/end_game_dialog.tscn" id="10_saoeg"]
 [ext_resource type="PackedScene" uid="uid://8cexe37khmty" path="res://objects/roost/roost.tscn" id="10_we7ej"]
@@ -22,8 +20,9 @@ position = Vector2(577.49994, 252.18753)
 scale = Vector2(0.39910156, 0.40332273)
 texture = ExtResource("2_saoeg")
 
-[node name="Player" parent="." unique_id=766519368 instance=ExtResource("3_we7ej")]
-position = Vector2(573, 643)
+[node name="Player" parent="." unique_id=766519368 node_paths=PackedStringArray("positions") instance=ExtResource("3_we7ej")]
+position = Vector2(575, 643)
+positions = [NodePath("../PositionMarker0"), NodePath("../PositionMarker1"), NodePath("../PositionMarker2"), NodePath("../PositionMarker3")]
 
 [node name="HUD" parent="." unique_id=1193212197 instance=ExtResource("4_xi5sv")]
 
@@ -32,12 +31,6 @@ position = Vector2(990.99994, 368.00003)
 rotation = -0.34233928
 scale = Vector2(3.41, 0.425)
 script = ExtResource("5_2dgve")
-
-[node name="MovePlayer" type="Node2D" parent="." unique_id=2060950705 node_paths=PackedStringArray("object")]
-script = ExtResource("6_x4ubh")
-object = NodePath("../Player")
-
-[node name="Input" parent="MovePlayer" unique_id=2142687075 instance=ExtResource("7_xm0ii")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1331016368 groups=["floor"]]
 position = Vector2(611, 666)
@@ -62,3 +55,15 @@ offset_right = 584.0
 offset_bottom = 293.0
 
 [node name="Roost" parent="." unique_id=1055971496 instance=ExtResource("10_we7ej")]
+
+[node name="PositionMarker0" type="Node2D" parent="." unique_id=1257471528]
+position = Vector2(500, 640)
+
+[node name="PositionMarker1" type="Node2D" parent="." unique_id=873721318]
+position = Vector2(650, 640)
+
+[node name="PositionMarker2" type="Node2D" parent="." unique_id=643076572]
+position = Vector2(500, 640)
+
+[node name="PositionMarker3" type="Node2D" parent="." unique_id=432198001]
+position = Vector2(650, 640)
