@@ -10,18 +10,25 @@ var current_step = 0
 @onready var click_area_show = $ClickAreaShow
 @onready var tada = $Tada
 
+var roost
+
+var click_zone
+
 func _ready() -> void:
 	var game_name = ProjectSettings.get_setting("application/config/name")
 	tutorial_steps = [
 		{"text": "Добро пожаловать в игру \"{game_name}\"".format({"game_name": game_name})},
 		{"text": "Это Мария.\nНекий пемуж нанял её,\nчтобы она прислуживала его кудевам"},
-		{"text": "Не беспокойтесь. Ей хорошо платят, \nа коледи и владелец гарема относятся к ней уважительно"},
 		{"text": "Однажды я расскажу об этом историю"},
-		{"text": "Это ваше рабочее место. Коледи здесь иногда отдыхают"},
-		{"text": "Одна из коледи снесла яйцо. Нужно его поймать"},
-		{"text": "Экран поделен на четыре части. \nЧтобы сказать Марии поймать верхнее левое яйцо, \nнадо нажать на левую верхнюю часть экрана. \nПопробуйте"},
-		{"text": "Как вы видете, Мария переместилась, \nчтобы поймать яйцо. \nПодождем, когда оно скатится"},
-		{"text": "Поздравляю! Вы поймали яйцо. Теперь вы чёрт!"}
+		{"text": "Это ваше рабочее место. Коледи здесь иногда отдыхают."},
+		{"text": "Одна из коледи снесла яйцо. Нужно его поймать."},
+		{"text": "Экран поделен на четыре части. \nЧтобы сказать Марии подойти к верхнему левому насеста, \nнадо нажать на соответствующую часть экрана. \nПопробуйте"},
+		{"text": "Как вы видите, Мария переместилась.\nПодождем, когда яйцо скатится"},
+		{"text": "Вы поймали яйцо!"},
+		{"text": "Появилось еще одно яйцо. Поймайте его по аналогии с предыдущим"},
+		{"text": "Появилось новое яйцо, хотя вы еще не поймали текущее.\nНе беспокойтесь.\nСначала дождитесь когда Мария поймает текущее яйцо,\nпосле чего
+			быстро передвиньте Марию к другому насесту, чтобы она успела поймать второе яйцо"},
+		{"text": "Поздравляю! Вы справились с обучением! Возвращаю вас обратно"}
 	]
 	var step_i = 0
 
@@ -47,8 +54,10 @@ func _ready() -> void:
 	await get_tree().create_timer(0.5).timeout
 	var player = get_node("Player")
 	player.visible = true
+	var input = player.get_node("Controller")
+	input.input_enable = false
 	# player.position = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y)
-	tada.position = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y / 2)
+	tada.position = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y * 3 / 4)
 	tada.restart()
 	await get_tree().create_timer(1.5).timeout
 
@@ -60,12 +69,8 @@ func _ready() -> void:
 	step_i+=1
 	await dialog.confirmed
 
-	dialog = show_message(tutorial_steps[step_i])
-	step_i+=1
-	await dialog.confirmed
-
 	await get_tree().create_timer(0.5).timeout
-	var roost = roost_preload.instantiate()
+	roost = roost_preload.instantiate()
 	add_child(roost)
 	await get_tree().create_timer(1.5).timeout
 
@@ -87,21 +92,41 @@ func _ready() -> void:
 	step_i+=1
 	await dialog.confirmed
 
+	input.input_enable = true
+	click_zone = Line2D.new()
+	click_zone.width = 4
+	click_zone.default_color = Color.YELLOW
+	click_zone.modulate = Color(1, 1, 0, 0.8)
+	click_zone.add_point(Vector2(0, 0))
+	click_zone.add_point(Vector2(get_viewport_rect().size.x / 2, 0))
+	click_zone.add_point(Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y / 2))
+	click_zone.add_point(Vector2(0, get_viewport_rect().size.y / 2))
+	click_area_show.add_child(click_zone)
 
-	var input = player.get_node("Controller")
+	var tween: Tween = create_tween()
+	tween.set_loops()
+	tween.tween_property(click_zone, "modulate", Color.YELLOW, 0.5)
+	tween.tween_property(click_zone, "modulate", Color.ORANGE, 0.5)
+	tween.tween_property(click_zone, "modulate", Color.RED, 0.5)
+	tween.tween_property(click_zone, "modulate", Color.YELLOW, 0.5)
+
+	input.input_mask = 0x1
 	while true:
 		var pressed_index: int = await input.quarter_clicked
 		if pressed_index == 0:
 			break
+	input.input_mask = 0xF
 
 	click_area_show.visible = false
+	input.input_enable = false
+
+	await get_tree().create_timer(1).timeout
 
 	dialog = show_message(tutorial_steps[step_i])
 	step_i += 1
 	await dialog.confirmed
 	egg.process_mode = Node.PROCESS_MODE_INHERIT
 
-	input.input_enable = false
 
 	await egg.caught
 
@@ -111,6 +136,81 @@ func _ready() -> void:
 	step_i += 1
 	await dialog.confirmed
 
+	egg = roost.get_node("Perch3").spawn_egg()
+	add_child(egg)
+	egg.process_mode = Node.PROCESS_MODE_DISABLED
+
+	dialog = show_message(tutorial_steps[step_i])
+	step_i += 1
+	await dialog.confirmed
+
+	egg.process_mode = Node.PROCESS_MODE_INHERIT
+
+	await get_tree().create_timer(2).timeout
+
+	var egg2 = roost.get_node("Perch2").spawn_egg()
+	add_child(egg2)
+	egg.process_mode = Node.PROCESS_MODE_DISABLED
+	egg2.process_mode = Node.PROCESS_MODE_DISABLED
+
+	dialog = show_message(tutorial_steps[step_i])
+	step_i += 1
+	await dialog.confirmed
+
+	egg.process_mode = Node.PROCESS_MODE_INHERIT
+	egg2.process_mode = Node.PROCESS_MODE_INHERIT
+
+	# var egg2_caught = false
+	# var any_egg_crashed = false
+	# var any_event_called = Signal()
+
+	# egg.crashed.connect(egg_crashed)
+	# egg2.crashed.connect(egg_crashed)
+
+	# while true:
+	# 	await any_event_called
+
+	# 	if egg2_caught:
+	# 		break
+
+	dialog = show_message(tutorial_steps[step_i])
+	step_i += 1
+	await dialog.confirmed
+
+	Global.load_scene(Global.test_scene)
+
+# func egg_crashed() -> void:
+# 	any_egg_crashed = true
+# 	any_event_called.emit()
+
+func two_eggs() -> bool:
+	var egg:Node2D = roost.get_node("Perch3")
+	add_child(egg)
+
+	await get_tree().create_timer(2).timeout
+
+	var egg2 = roost.get_node("Perch2")
+	egg.crashed.disconnect(two_eggs)
+	egg.crashed.disconnect(egg.queue_free)
+	egg2.crashed.connect(egg2.queue_free)
+	egg2.crashed.connect(egg.queue_free)
+	egg2.crashed.connect(two_eggs)
+	add_child(egg2)
+
+	# var egg_caught = false
+
+	# var egg2_caught = false
+
+	# func
+
+	await egg2.caught
+
+	print("Пройдено!")
+	return true
+
+func set_border_alpha(value: float):
+	for line in click_zone.get_children():
+		line.modulate.a = value
 
 
 func show_message(item):

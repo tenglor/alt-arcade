@@ -6,10 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://t0c05bt1vvyc" path="res://actors/player/player.tscn" id="4_xip1d"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ilxo7"]
-emission_shape_scale = Vector3(0.2, 0.2, 0.2)
-angle_min = -317.4
-angle_max = 394.80002
-gravity = Vector3(0, 98, 0)
+emission_shape_scale = Vector3(0.03, 0.03, 0.03)
+angle_min = -510.9
+angle_max = 526.4
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 306.44998
+initial_velocity_max = 516.13
+gravity = Vector3(0, 400, 0)
+scale_min = 0.19999999
+scale_max = 0.19999999
 
 [node name="Tutorial" type="Node2D" unique_id=1707458278]
 script = ExtResource("1_tkdws")
@@ -32,10 +37,11 @@ texture = ExtResource("2_8pb1l")
 
 [node name="Tada" type="GPUParticles2D" parent="." unique_id=203545184]
 z_index = 5
+position = Vector2(-1, 0)
 emitting = false
-amount = 20
+amount = 50
 texture = ExtResource("3_104xa")
-lifetime = 2.0
+lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ilxo7")
