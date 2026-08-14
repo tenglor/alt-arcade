@@ -14,6 +14,8 @@ var roost
 
 var click_zone
 
+signal any_event_called
+
 func _ready() -> void:
 	var game_name = ProjectSettings.get_setting("application/config/name")
 	tutorial_steps = [
@@ -28,6 +30,7 @@ func _ready() -> void:
 		{"text": "Появилось еще одно яйцо. Поймайте его по аналогии с предыдущим"},
 		{"text": "Появилось новое яйцо, хотя вы еще не поймали текущее.\nНе беспокойтесь.\nСначала дождитесь когда Мария поймает текущее яйцо,\nпосле чего
 			быстро передвиньте Марию к другому насесту, чтобы она успела поймать второе яйцо"},
+		{"text": "Яйцо разбилось!\nПопробуйте еще раз"},
 		{"text": "Поздравляю! Вы справились с обучением! Возвращаю вас обратно"}
 	]
 	var step_i = 0
@@ -160,15 +163,47 @@ func _ready() -> void:
 	egg.process_mode = Node.PROCESS_MODE_INHERIT
 	egg2.process_mode = Node.PROCESS_MODE_INHERIT
 
-	# var egg2_caught = false
-	# var any_egg_crashed = false
-	# var any_event_called = Signal()
+	var egg_status = {
+		"egg1_caught": false,
+		"egg2_caught": false,
+		"egg1_crushed": false,
+		"egg2_crushed": false,
+	}
 
-	# egg.crashed.connect(egg_crashed)
-	# egg2.crashed.connect(egg_crashed)
+	egg.crashed.connect(egg_crashed.bind(egg_status, 1))
+	egg2.crashed.connect(egg_crashed.bind(egg_status, 2))
+	# egg.caught.connect(egg_caught.bind(egg_status, 1))
+	egg2.caught.connect(egg_caught.bind(egg_status, 2))
 
-	# while true:
-	# 	await any_event_called
+	step_i = step_i + 1
+	while true:
+		await any_event_called
+
+		if egg_status["egg2_caught"]:
+			break
+		if egg_status["egg1_crushed"]:
+			egg2.queue_free()
+
+		step_i = step_i - 1
+		dialog = show_message(tutorial_steps[step_i])
+		step_i = step_i + 1
+		await dialog.confirmed
+
+		egg = roost.get_node("Perch3").spawn_egg()
+		add_child(egg)
+
+		await get_tree().create_timer(2).timeout
+
+		egg2 = roost.get_node("Perch2").spawn_egg()
+		add_child(egg2)
+
+		egg.crashed.connect(egg_crashed.bind(egg_status, 1))
+		egg2.crashed.connect(egg_crashed.bind(egg_status, 2))
+		# egg.caught.connect(egg_caught.bind(egg_status, 1))
+		egg2.caught.connect(egg_caught.bind(egg_status, 2))
+		# if dict["egg1_crushed"]:
+
+
 
 	# 	if egg2_caught:
 	# 		break
@@ -179,9 +214,17 @@ func _ready() -> void:
 
 	Global.load_scene(Global.test_scene)
 
-# func egg_crashed() -> void:
-# 	any_egg_crashed = true
-# 	any_event_called.emit()
+func egg_crashed(dict, index) -> void:
+	var key = "egg" + str(index) + "_crushed"
+	print(key)
+	dict[key] = true
+	any_event_called.emit()
+
+func egg_caught(dict, index) -> void:
+	var key = "egg" + str(index) + "_caught"
+	print(key)
+	dict[key] = true
+	any_event_called.emit()
 
 func two_eggs() -> bool:
 	var egg:Node2D = roost.get_node("Perch3")

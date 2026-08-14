@@ -16,6 +16,9 @@ gravity = Vector3(0, 400, 0)
 scale_min = 0.19999999
 scale_max = 0.19999999
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xip1d"]
+size = Vector2(1153, 37)
+
 [node name="Tutorial" type="Node2D" unique_id=1707458278]
 script = ExtResource("1_tkdws")
 
@@ -62,3 +65,11 @@ position = Vector2(650, 640)
 visible = false
 position = Vector2(570, 638)
 positions = [NodePath("../PositionMarker0"), NodePath("../PositionMarker1"), NodePath("../PositionMarker2"), NodePath("../PositionMarker3")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1780978601 groups=["floor"]]
+position = Vector2(611, 666)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=549787042]
+position = Vector2(-40, -23.5)
+shape = SubResource("RectangleShape2D_xip1d")
