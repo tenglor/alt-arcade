@@ -40,20 +40,6 @@ collision_mask = 4
 position = Vector2(-40, -23.5)
 shape = SubResource("RectangleShape2D_i60o8")
 
-[node name="GameMenu" parent="." unique_id=261793984 instance=ExtResource("9_vq3si")]
-visible = false
-offset_left = 259.0
-offset_top = 67.0
-offset_right = 259.0
-offset_bottom = 67.0
-
-[node name="EndGameDialog" parent="." unique_id=1723092759 instance=ExtResource("10_saoeg")]
-visible = false
-offset_left = 584.0
-offset_top = 293.0
-offset_right = 584.0
-offset_bottom = 293.0
-
 [node name="Roost" parent="." unique_id=1055971496 instance=ExtResource("10_we7ej")]
 
 [node name="PositionMarker0" type="Node2D" parent="." unique_id=1257471528]
@@ -67,3 +53,31 @@ position = Vector2(500, 640)
 
 [node name="PositionMarker3" type="Node2D" parent="." unique_id=432198001]
 position = Vector2(650, 640)
+
+[node name="UI" type="Control" parent="." unique_id=1197091770]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="UI" unique_id=2108989251]
+oversampling_override = 1.0
+size = Vector2i(226, 100)
+ok_button_text = "OK"
+dialog_text = "Хотите пройти обучение?"
+
+[node name="GameMenu" parent="UI" unique_id=261793984 instance=ExtResource("9_vq3si")]
+visible = false
+layout_mode = 1
+offset_left = 259.0
+offset_top = 67.0
+offset_right = 259.0
+offset_bottom = 67.0
+
+[node name="EndGameDialog" parent="UI" unique_id=1723092759 instance=ExtResource("10_saoeg")]
+visible = false
+layout_mode = 1
+offset_left = 584.0
+offset_top = 293.0
+offset_right = 584.0
+offset_bottom = 293.0
