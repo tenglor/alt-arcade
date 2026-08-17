@@ -1,6 +1,7 @@
 extends Node
 
 var test_scene = "res://scenes/test/test.tscn"
+var tutorial_scene = "res://scenes/tutorial/tutorial.tscn"
 var main_menu  = "res://ui/main_menu/main_menu.tscn"
 
 var tutorial_offer = true

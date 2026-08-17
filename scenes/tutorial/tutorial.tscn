@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://di2et85cyfr7q"]
 
-[ext_resource type="Script" uid="uid://caj2j8kv3y28w" path="res://ui/tutorial/tutorial.gd" id="1_tkdws"]
-[ext_resource type="Texture2D" uid="uid://brvjaah0ae7fh" path="res://scenes/test/background.png" id="2_8pb1l"]
-[ext_resource type="Texture2D" uid="uid://c22kbh1y6veip" path="res://effects/sparcles/sparcle1.png" id="3_104xa"]
-[ext_resource type="PackedScene" uid="uid://t0c05bt1vvyc" path="res://actors/player/player.tscn" id="4_xip1d"]
+[ext_resource type="Script" uid="uid://caj2j8kv3y28w" path="res://scenes/tutorial/tutorial.gd" id="1_g40di"]
+[ext_resource type="Texture2D" uid="uid://brvjaah0ae7fh" path="res://scenes/test/background.png" id="2_r23bs"]
+[ext_resource type="Texture2D" uid="uid://c22kbh1y6veip" path="res://effects/sparcles/sparcle1.png" id="3_pq3l0"]
+[ext_resource type="PackedScene" uid="uid://t0c05bt1vvyc" path="res://actors/player/player.tscn" id="4_g7eoy"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ilxo7"]
 emission_shape_scale = Vector3(0.03, 0.03, 0.03)
@@ -20,7 +20,7 @@ scale_max = 0.19999999
 size = Vector2(1153, 37)
 
 [node name="Tutorial" type="Node2D" unique_id=1707458278]
-script = ExtResource("1_tkdws")
+script = ExtResource("1_g40di")
 
 [node name="ClickAreaShow" type="CanvasLayer" parent="." unique_id=975053453]
 visible = false
@@ -36,14 +36,14 @@ color = Color(0.6156863, 0.23529412, 0.32156864, 0.56078434)
 [node name="Background" type="Sprite2D" parent="." unique_id=1662119039]
 position = Vector2(577.49994, 252.18753)
 scale = Vector2(0.39910156, 0.40332273)
-texture = ExtResource("2_8pb1l")
+texture = ExtResource("2_r23bs")
 
 [node name="Tada" type="GPUParticles2D" parent="." unique_id=203545184]
 z_index = 5
 position = Vector2(-1, 0)
 emitting = false
 amount = 50
-texture = ExtResource("3_104xa")
+texture = ExtResource("3_pq3l0")
 lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
@@ -61,7 +61,7 @@ position = Vector2(500, 640)
 [node name="PositionMarker3" type="Node2D" parent="." unique_id=226950279]
 position = Vector2(650, 640)
 
-[node name="Player" parent="." unique_id=650936051 node_paths=PackedStringArray("positions") instance=ExtResource("4_xip1d")]
+[node name="Player" parent="." unique_id=650936051 node_paths=PackedStringArray("positions") instance=ExtResource("4_g7eoy")]
 visible = false
 position = Vector2(570, 638)
 positions = [NodePath("../PositionMarker0"), NodePath("../PositionMarker1"), NodePath("../PositionMarker2"), NodePath("../PositionMarker3")]

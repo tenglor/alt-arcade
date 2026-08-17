@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dgv7ircsrqhb2"]
+
+[ext_resource type="Texture2D" uid="uid://d1cpyxikbjl1f" path="res://objects/fireplace/fiereplace.png" id="1_pql33"]
+[ext_resource type="Script" uid="uid://bltrdd3syslpj" path="res://objects/fireplace/fireplace.gd" id="1_suy8n"]
+[ext_resource type="Texture2D" uid="uid://btodji6dl104u" path="res://effects/sparcles/sparcle2.png" id="2_nfcu3"]
+[ext_resource type="Texture2D" uid="uid://c22kbh1y6veip" path="res://effects/sparcles/sparcle1.png" id="3_aipkm"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aipkm"]
+particle_flag_align_y = true
+emission_shape = 1
+emission_sphere_radius = 22.08
+angle_min = -240.0
+angle_max = 278.7
+inherit_velocity_ratio = 10.0
+velocity_pivot = Vector3(0, 1, 0)
+direction = Vector3(0, -1, 0)
+spread = 78.353
+initial_velocity_min = 53.75
+initial_velocity_max = 274.16998
+angular_velocity_min = 0.9999839
+angular_velocity_max = 0.9999839
+gravity = Vector3(0, 98, 0)
+scale_min = 0.099999994
+scale_max = 0.29999998
+
+[node name="Fireplace" type="Node2D" unique_id=1526664572]
+position = Vector2(361, 282)
+script = ExtResource("1_suy8n")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1844898354]
+position = Vector2(2.842171e-14, -179)
+scale = Vector2(0.2647223, 0.26472223)
+texture = ExtResource("1_pql33")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1747511767]
+z_index = -2
+offset_left = -125.0
+offset_top = -259.0
+offset_right = 130.0
+offset_bottom = -20.0
+color = Color(0.29308397, 0.16083726, 0.050374113, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1081945460]
+modulate = Color(1, 1, 0.29411766, 1)
+self_modulate = Color(1, 1, 0.9372549, 1)
+z_index = -1
+position = Vector2(0, -108)
+amount = 30
+texture = ExtResource("2_nfcu3")
+lifetime = 0.8
+preprocess = 0.74
+speed_scale = 0.5
+explosiveness = 0.8
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_aipkm")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=130431376]
+z_index = -1
+position = Vector2(2, -107.00001)
+scale = Vector2(4.109375, 4.40625)
+color = Color(1, 1, 0.05490196, 1)
+energy = 2.19
+range_z_max = -1
+texture = ExtResource("3_aipkm")

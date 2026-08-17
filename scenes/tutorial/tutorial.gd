@@ -104,6 +104,7 @@ func _ready() -> void:
 	click_zone.add_point(Vector2(get_viewport_rect().size.x / 2, 0))
 	click_zone.add_point(Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y / 2))
 	click_zone.add_point(Vector2(0, get_viewport_rect().size.y / 2))
+	click_zone.add_point(Vector2(0, 0))
 	click_area_show.add_child(click_zone)
 
 	var tween: Tween = create_tween()
