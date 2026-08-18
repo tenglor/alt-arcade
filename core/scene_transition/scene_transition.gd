@@ -31,7 +31,6 @@ func start_transition(target_scene: String, spawn_point_id: int, duration: float
 	fade_out.tween_property(color_rect, "color:a", 0.0, duration * 0.5)
 	await fade_out.finished
 
-
 func get_player()->CharacterBody2D:
 	return get_tree().get_first_node_in_group("player")
 
