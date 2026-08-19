@@ -18,7 +18,7 @@ func _ready() -> void:
 	print("facade", facade)
 	print("fire_light", fire_light)
 	print("fire_light.z_index", fire_light.z_index)
-	fire_light.range_layer_max = fire_light.z_index + z_index + 1
+	# fire_light.range_layer_max = fire_light.z_index + z_index + 1
 	# update_z()
 
 
