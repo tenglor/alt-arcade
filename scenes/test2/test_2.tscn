@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cirvrgnsobxbc"]
+
+[ext_resource type="PackedScene" uid="uid://dth0wkql67bja" path="res://objects/perch/perch.tscn" id="1_h44c0"]
+[ext_resource type="Script" uid="uid://c78ut0rs1imxj" path="res://scenes/test2/test_2.gd" id="1_hf3gx"]
+
+[node name="Test2" type="Node2D" unique_id=1770096401]
+script = ExtResource("1_hf3gx")
+
+[node name="Perch" parent="." unique_id=1178654223 instance=ExtResource("1_h44c0")]
+position = Vector2(104, 228)

@@ -13,6 +13,7 @@ func _hard_cancel_tutorial(action: StringName):
 	_tutorial_offer_passed.emit()
 
 func _jump_to_tutorial():
+	Global.tutorial_offer = false
 	PauseManager.resume_game()
 	Global.load_scene(Global.tutorial_scene)
 
@@ -38,7 +39,7 @@ func _ready() -> void:
 
 		PauseManager.resume_game()
 
-	DifficultyManager.init()
+	DifficultyManager.reset()
 	menu.closed.connect(close_menu)
 
 func _input(event: InputEvent) -> void:

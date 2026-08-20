@@ -49,6 +49,12 @@ func _ready() -> void:
 	vertical_line.add_point(Vector2(get_viewport().size.x / 2, get_viewport().size.y))
 	click_area_show.add_child(vertical_line)
 
+	var screen_size := get_viewport().get_visible_rect().size
+	var label1 = Label.new()
+	label1.text = "1"
+	label1.add_theme_font_size_override("font_size", int(screen_size.y * 0.25))
+	click_area_show.add_child(label1)
+
 	var dialog
 	dialog = show_message(tutorial_steps[step_i])
 	step_i += 1
@@ -57,7 +63,7 @@ func _ready() -> void:
 	await get_tree().create_timer(0.5).timeout
 	var player = get_node("Player")
 	player.visible = true
-	var input = player.get_node("Controller")
+	var input = player.get_node("InputTouch")
 	input.input_enable = false
 	# player.position = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y)
 	tada.position = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y * 3 / 4)
