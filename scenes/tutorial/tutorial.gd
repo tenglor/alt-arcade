@@ -16,20 +16,27 @@ var click_zone
 
 signal any_event_called
 
+var egg_gravity_scale = 0.5
+
+#Кудевы, коледи, кодевы
 func _ready() -> void:
+	Global.tutorial_offer = false
 	var game_name = ProjectSettings.get_setting("application/config/name")
 	tutorial_steps = [
 		{"text": "Добро пожаловать в игру \"{game_name}\"".format({"game_name": game_name})},
 		{"text": "Это Мария.\nНекий пемуж нанял её,\nчтобы она прислуживала его кудевам"},
 		{"text": "Однажды я расскажу об этом историю"},
-		{"text": "Это ваше рабочее место. Коледи здесь иногда отдыхают."},
-		{"text": "Одна из коледи снесла яйцо. Нужно его поймать."},
-		{"text": "Экран поделен на четыре части. \nЧтобы сказать Марии подойти к верхнему левому насеста, \nнадо нажать на соответствующую часть экрана. \nПопробуйте"},
+		{"text": "Это ваше рабочее место. Кудевы здесь иногда отдыхают."},
+		{"text": "Одна из кудев снесла яйцо. Нужно его поймать."},
+		{"text": "В игре надо передвигать Марию между четырями насестами.\nУправлять Марией можно нажимая на одну
+			из четвертей экрана или кнопками на клавиатуре\n
+		 	Попробуйте передвинуть Марию в верхний левый угол"},
 		{"text": "Как вы видите, Мария переместилась.\nПодождем, когда яйцо скатится"},
 		{"text": "Вы поймали яйцо!"},
-		{"text": "Появилось еще одно яйцо. Поймайте его по аналогии с предыдущим"},
-		{"text": "Появилось новое яйцо, хотя вы еще не поймали текущее.\nНе беспокойтесь.\nСначала дождитесь когда Мария поймает текущее яйцо,\nпосле чего
-			быстро передвиньте Марию к другому насесту, чтобы она успела поймать второе яйцо"},
+		{"text": "Появилось еще одно яйцо.\nПоймайте его по аналогии с предыдущим"},
+		{"text": "Появилось новое яйцо, хотя вы еще не поймали текущее.\n\nНе беспокойтесь.\n\nСначала дождитесь когда Мария
+			поймает текущее яйцо,\nпосле чего
+			быстро передвиньте Марию к другому насесту,\nчтобы она успела поймать второе яйцо"},
 		{"text": "Яйцо разбилось!\nПопробуйте еще раз"},
 		{"text": "Поздравляю! Вы справились с обучением! Возвращаю вас обратно"}
 	]
@@ -50,10 +57,43 @@ func _ready() -> void:
 	click_area_show.add_child(vertical_line)
 
 	var screen_size := get_viewport().get_visible_rect().size
-	var label1 = Label.new()
-	label1.text = "1"
-	label1.add_theme_font_size_override("font_size", int(screen_size.y * 0.25))
-	click_area_show.add_child(label1)
+	var label
+	label = Label.new()
+	label.text = "Q"
+	label.add_theme_font_size_override("font_size", int(screen_size.y * 0.25))
+	label.size = Vector2(screen_size.x / 2, screen_size.y / 2)
+	label.position = Vector2(0, 0)
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	click_area_show.add_child(label)
+
+	label = Label.new()
+	label.text = "E"
+	label.add_theme_font_size_override("font_size", int(screen_size.y * 0.25))
+	label.size = Vector2(screen_size.x / 2, screen_size.y / 2)
+	label.position = Vector2(screen_size.x / 2, 0)
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	click_area_show.add_child(label)
+
+	label = Label.new()
+	label.text = "A"
+	label.add_theme_font_size_override("font_size", int(screen_size.y * 0.25))
+	label.size = Vector2(screen_size.x / 2, screen_size.y / 2)
+	label.position = Vector2(0, screen_size.y / 2)
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	click_area_show.add_child(label)
+
+	label = Label.new()
+	label.text = "D"
+	label.add_theme_font_size_override("font_size", int(screen_size.y * 0.25))
+	label.size = Vector2(screen_size.x / 2, screen_size.y / 2)
+	label.position = Vector2(screen_size.x / 2, screen_size.y / 2)
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	click_area_show.add_child(label)
+
 
 	var dialog
 	dialog = show_message(tutorial_steps[step_i])
@@ -63,7 +103,7 @@ func _ready() -> void:
 	await get_tree().create_timer(0.5).timeout
 	var player = get_node("Player")
 	player.visible = true
-	var input = player.get_node("InputTouch")
+	var input = player.get_node("Controller")
 	input.input_enable = false
 	# player.position = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y)
 	tada.position = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y * 3 / 4)
@@ -88,6 +128,7 @@ func _ready() -> void:
 	await dialog.confirmed
 
 	var egg = roost.get_node("Perch0").spawn_egg()
+	egg.gravity_scale = egg_gravity_scale
 	add_child(egg)
 	egg.process_mode = Node.PROCESS_MODE_DISABLED
 
@@ -147,6 +188,7 @@ func _ready() -> void:
 	await dialog.confirmed
 
 	egg = roost.get_node("Perch3").spawn_egg()
+	egg.gravity_scale = egg_gravity_scale
 	add_child(egg)
 	egg.process_mode = Node.PROCESS_MODE_DISABLED
 
@@ -159,6 +201,7 @@ func _ready() -> void:
 	await get_tree().create_timer(2).timeout
 
 	var egg2 = roost.get_node("Perch2").spawn_egg()
+	egg2.gravity_scale = egg_gravity_scale
 	add_child(egg2)
 	egg.process_mode = Node.PROCESS_MODE_DISABLED
 	egg2.process_mode = Node.PROCESS_MODE_DISABLED
@@ -197,11 +240,13 @@ func _ready() -> void:
 		await dialog.confirmed
 
 		egg = roost.get_node("Perch3").spawn_egg()
+		egg.gravity_scale = egg_gravity_scale
 		add_child(egg)
 
 		await get_tree().create_timer(2).timeout
 
 		egg2 = roost.get_node("Perch2").spawn_egg()
+		egg2.gravity_scale = egg_gravity_scale
 		add_child(egg2)
 
 		egg.crashed.connect(egg_crashed.bind(egg_status, 1))

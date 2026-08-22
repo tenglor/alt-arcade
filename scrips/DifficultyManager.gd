@@ -1,7 +1,7 @@
 extends Node
 
 var score = 0
-var egg_gravity_scale_values = [0.5, 1, 1.5, 1.7, 1.85, 2]
+var egg_gravity_scale_values = [0.5, 1, 1.5, 1.8, 1.9, 2]
 var egg_gravity_scale_points = [100, 120, 150, 200, 300, 500]
 var egg_gravity_scale = egg_gravity_scale_values[0]
 var scale_index = 0

@@ -13,7 +13,6 @@ func _hard_cancel_tutorial(action: StringName):
 	_tutorial_offer_passed.emit()
 
 func _jump_to_tutorial():
-	Global.tutorial_offer = false
 	PauseManager.resume_game()
 	Global.load_scene(Global.tutorial_scene)
 
