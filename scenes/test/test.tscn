@@ -9,36 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://bvjfderfpdtx1" path="res://ui/game_menu/game_menu.tscn" id="9_vq3si"]
 [ext_resource type="PackedScene" uid="uid://djevt65220j4k" path="res://ui/end_game_menu/end_game_dialog.tscn" id="10_saoeg"]
 [ext_resource type="PackedScene" uid="uid://8cexe37khmty" path="res://objects/roost/roost.tscn" id="10_we7ej"]
-[ext_resource type="Texture2D" uid="uid://c22kbh1y6veip" path="res://effects/sparcles/sparcle1.png" id="10_xi5sv"]
+[ext_resource type="PackedScene" uid="uid://ftstcbbfo6i3" path="res://effects/dust/dust.tscn" id="10_xi5sv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i60o8"]
 size = Vector2(1153, 37)
-
-[sub_resource type="Curve" id="Curve_xi5sv"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-metadata/_snap_enabled = true
-
-[sub_resource type="CurveTexture" id="CurveTexture_saoeg"]
-curve = SubResource("Curve_xi5sv")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2dgve"]
-lifetime_randomness = 1.0
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(600, 400, 0)
-angle_min = -286.4
-angle_max = 232.20001
-direction = Vector3(0, 0, 0)
-spread = 0.0
-initial_velocity_min = -10.0
-initial_velocity_max = 10.0
-gravity = Vector3(0, 1, 0)
-scale_min = 0.049999997
-scale_max = 0.19999999
-color = Color(1, 1, 1, 0.74509805)
-alpha_curve = SubResource("CurveTexture_saoeg")
-turbulence_enabled = true
 
 [node name="Test" type="Node2D" unique_id=471152253]
 script = ExtResource("1_5unt0")
@@ -115,10 +89,5 @@ offset_bottom = 293.0
 z_index = -2
 position = Vector2(541, 613)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1786147242]
+[node name="Dust" parent="." unique_id=1632906561 instance=ExtResource("10_xi5sv")]
 position = Vector2(571, 333)
-amount = 100
-texture = ExtResource("10_xi5sv")
-lifetime = 10.0
-preprocess = 12.0
-process_material = SubResource("ParticleProcessMaterial_2dgve")

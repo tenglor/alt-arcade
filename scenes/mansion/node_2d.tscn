@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b54p8065nihoi"]
+
+[ext_resource type="Texture2D" uid="uid://bbogxepmarii2" path="res://objects/wall/walls.png" id="1_whadc"]
+[ext_resource type="PackedScene" uid="uid://dgv7ircsrqhb2" path="res://objects/fireplace/fireplace.tscn" id="2_lqj2c"]
+
+[node name="Node2D" type="Node2D" unique_id=234464880]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1420208082]
+z_index = -6
+position = Vector2(-157, -51)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D" unique_id=1309286370]
+position = Vector2(670, 339)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_whadc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1007000162]
+position = Vector2(1493, 339)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_whadc")
+
+[node name="Fireplace" parent="." unique_id=1526664572 instance=ExtResource("2_lqj2c")]
+position = Vector2(618, 650)
