@@ -7,21 +7,20 @@
 [ext_resource type="Script" uid="uid://b0mn4fhhvmr7r" path="res://scrips/egg_generator.gd" id="5_2dgve"]
 [ext_resource type="PackedScene" uid="uid://dgv7ircsrqhb2" path="res://objects/fireplace/fireplace.tscn" id="9_5unt0"]
 [ext_resource type="PackedScene" uid="uid://bvjfderfpdtx1" path="res://ui/game_menu/game_menu.tscn" id="9_vq3si"]
+[ext_resource type="Texture2D" uid="uid://ceatnpo1b4xk4" path="res://effects/light.png" id="9_xi5sv"]
 [ext_resource type="PackedScene" uid="uid://djevt65220j4k" path="res://ui/end_game_menu/end_game_dialog.tscn" id="10_saoeg"]
 [ext_resource type="PackedScene" uid="uid://8cexe37khmty" path="res://objects/roost/roost.tscn" id="10_we7ej"]
 [ext_resource type="PackedScene" uid="uid://ftstcbbfo6i3" path="res://effects/dust/dust.tscn" id="10_xi5sv"]
+[ext_resource type="Texture2D" uid="uid://db8e1byui2vt" path="res://assets/closet.png" id="11_we7ej"]
+[ext_resource type="Texture2D" uid="uid://c5udukehdxdh7" path="res://assets/walls.png" id="13_2dgve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i60o8"]
 size = Vector2(1153, 37)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xi5sv"]
+
 [node name="Test" type="Node2D" unique_id=471152253]
 script = ExtResource("1_5unt0")
-
-[node name="Background" type="Sprite2D" parent="." unique_id=922220610]
-z_index = -8
-position = Vector2(577.49994, 252.18753)
-scale = Vector2(0.39910156, 0.40332273)
-texture = ExtResource("2_saoeg")
 
 [node name="Player" parent="." unique_id=766519368 node_paths=PackedStringArray("positions") instance=ExtResource("3_we7ej")]
 position = Vector2(575, 643)
@@ -85,9 +84,51 @@ offset_top = 293.0
 offset_right = 584.0
 offset_bottom = 293.0
 
-[node name="Fireplace" parent="." unique_id=1526664572 instance=ExtResource("9_5unt0")]
+[node name="Dust" parent="." unique_id=1632906561 instance=ExtResource("10_xi5sv")]
+position = Vector2(571, 333)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=35924089]
+layer = -2
+
+[node name="PointLight2D" type="PointLight2D" parent="CanvasLayer" unique_id=1142014589]
+position = Vector2(571, 269)
+color = Color(0.74509805, 1, 0.627451, 1)
+energy = 3.0
+blend_mode = 2
+range_layer_min = -2
+range_layer_max = -1
+texture = ExtResource("9_xi5sv")
+texture_scale = 13.59
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer" unique_id=1970959268]
+color = Color(0.56696963, 0.38180238, 0.42722076, 1)
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer" unique_id=922220610]
+z_index = -8
+material = SubResource("CanvasItemMaterial_xi5sv")
+position = Vector2(577.49994, 252.18753)
+scale = Vector2(0.39910156, 0.40332273)
+texture = ExtResource("2_saoeg")
+
+[node name="Fireplace" parent="CanvasLayer" unique_id=1526664572 instance=ExtResource("9_5unt0")]
 z_index = -2
 position = Vector2(541, 613)
 
-[node name="Dust" parent="." unique_id=1632906561 instance=ExtResource("10_xi5sv")]
-position = Vector2(571, 333)
+[node name="Closet" type="Sprite2D" parent="CanvasLayer" unique_id=1301109741]
+z_index = -6
+position = Vector2(106.99999, 288)
+scale = Vector2(0.15274706, 0.15806864)
+texture = ExtResource("11_we7ej")
+
+[node name="Closet2" type="Sprite2D" parent="CanvasLayer" unique_id=1878734545]
+z_index = -6
+position = Vector2(1006, 293)
+scale = Vector2(0.153, 0.153)
+texture = ExtResource("11_we7ej")
+
+[node name="Walls" type="Sprite2D" parent="CanvasLayer" unique_id=1709242872]
+visible = false
+z_index = -7
+position = Vector2(601.875, 223.62497)
+scale = Vector2(0.65669274, 0.53852797)
+texture = ExtResource("13_2dgve")

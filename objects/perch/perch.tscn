@@ -9,6 +9,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ef1i7"]
 size = Vector2(128, 128)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2dgve"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qu0mo"]
 size = Vector2(175.25, 20)
 
@@ -36,6 +38,7 @@ position = Vector2(-1, -8)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=442633022]
 visible = false
+material = SubResource("CanvasItemMaterial_2dgve")
 position = Vector2(117.00001, -56.999985)
 scale = Vector2(0.43195787, 0.46476194)
 texture = ExtResource("5_c7hs3")

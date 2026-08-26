@@ -8,6 +8,7 @@ func setup(parent_sprite: Sprite2D, texture: Texture2D, shape: Shape2D, pos: Vec
 	$Sprite2D.texture = texture
 	$Sprite2D.scale = parent_sprite.scale
 	$Sprite2D.position = parent_sprite.position
+	$Sprite2D.modulate = parent_sprite.modulate
 	$CollisionShape2D.shape = shape
 	position = pos
 

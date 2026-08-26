@@ -31,9 +31,13 @@ func _on_timer_timeout():
 	var i = rng.randi_range(0, 3)
 	var chicken = chicken_roosts[i]
 	var egg = chicken.spawn_egg()
+	if randf() > 0.05:
+		egg.crashed.connect(_on_egg_crashed)
+		egg.caught.connect(_on_egg_caught)
+	else:
+		egg.rotten = true
+		egg.caught.connect(_on_egg_crashed)
 	get_parent().add_child(egg)
-	egg.crashed.connect(_on_egg_crashed)
-	egg.caught.connect(_on_egg_caught)
 	egg.gravity_scale = DifficultyManager.get_gravity_scale()
 	is_timeout = false
 
