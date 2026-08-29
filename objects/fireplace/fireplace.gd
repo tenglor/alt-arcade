@@ -11,13 +11,7 @@ var time
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	time = 0
-	print("z_index: ", z_index)
-	print("Относительно ", z_as_relative)
-	print("back_wall", back_wall.z_index)
-	print("logs", logs)
-	print("facade", facade)
-	print("fire_light", fire_light)
-	print("fire_light.z_index", fire_light.z_index)
+	$AnimatedSprite2D.play("default")
 	# fire_light.range_layer_max = fire_light.z_index + z_index + 1
 	# update_z()
 

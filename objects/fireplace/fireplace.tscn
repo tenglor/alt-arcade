@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://btodji6dl104u" path="res://effects/sparcles/sparcle2.png" id="2_nfcu3"]
 [ext_resource type="Texture2D" uid="uid://c22kbh1y6veip" path="res://effects/sparcles/sparcle1.png" id="3_aipkm"]
 [ext_resource type="Texture2D" uid="uid://dqle2ukqcwx01" path="res://objects/fireplace/firewood.png" id="5_ka42a"]
+[ext_resource type="Texture2D" uid="uid://7g31ker2bd7n" path="res://assets/fire_atlas.png" id="6_enaxf"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aipkm"]
 particle_flag_align_y = true
@@ -23,6 +24,70 @@ angular_velocity_max = 0.9999839
 gravity = Vector3(0, 98, 0)
 scale_min = 0.099999994
 scale_max = 0.29999998
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo1t8"]
+atlas = ExtResource("6_enaxf")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsfuy"]
+atlas = ExtResource("6_enaxf")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp1ua"]
+atlas = ExtResource("6_enaxf")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vww2"]
+atlas = ExtResource("6_enaxf")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb3tx"]
+atlas = ExtResource("6_enaxf")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca1ll"]
+atlas = ExtResource("6_enaxf")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipmug"]
+atlas = ExtResource("6_enaxf")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clmiq"]
+atlas = ExtResource("6_enaxf")
+region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p07ip"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo1t8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsfuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cp1ua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vww2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb3tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca1ll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipmug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clmiq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Fireplace" type="Node2D" unique_id=1526664572]
 script = ExtResource("1_suy8n")
@@ -72,3 +137,9 @@ process_material = SubResource("ParticleProcessMaterial_aipkm")
 position = Vector2(2.842171e-14, -179)
 scale = Vector2(0.2647223, 0.26472223)
 texture = ExtResource("1_pql33")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=749417075]
+position = Vector2(-1, -96)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_p07ip")
+frame_progress = 0.09033636

@@ -1,8 +1,9 @@
 extends Node
 
-@onready var menu: Control = $UI/GameMenu
-@onready var score: Control = $UI/EndGameDialog
-@onready var tutorial_dialog := $UI/ConfirmationDialog
+@onready var ui: Control = $MenuCanvasLayer/UI
+var menu: Control
+var score: Control
+var tutorial_dialog
 var is_menu_open: bool = false
 signal _tutorial_offer_passed
 
@@ -18,6 +19,9 @@ func _jump_to_tutorial():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	menu = ui.get_node("GameMenu")
+	score = ui.get_node("EndGameDialog")
+	tutorial_dialog = ui.get_node("ConfirmationDialog")
 
 	if tutorial_dialog && Global.tutorial_offer:
 		PauseManager.pause_game()

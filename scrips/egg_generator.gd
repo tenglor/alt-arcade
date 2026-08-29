@@ -5,7 +5,8 @@ extends Node2D
 @onready var hud: HUD = $"../HUD"
 # var hud: HUD
 @onready var hp_counter = 0
-@onready var roost = $"../Roost"
+@export var roost: Node2D
+@export var egg_parent: Node = self
 
 var rng = RandomNumberGenerator.new()
 var is_timeout = false
@@ -31,13 +32,16 @@ func _on_timer_timeout():
 	var i = rng.randi_range(0, 3)
 	var chicken = chicken_roosts[i]
 	var egg = chicken.spawn_egg()
-	if randf() > 0.05:
-		egg.crashed.connect(_on_egg_crashed)
-		egg.caught.connect(_on_egg_caught)
-	else:
-		egg.rotten = true
-		egg.caught.connect(_on_egg_crashed)
-	get_parent().add_child(egg)
+	egg.z_index = egg.z_index + 2
+	egg.crashed.connect(_on_egg_crashed)
+	egg.caught.connect(_on_egg_caught)
+	# if randf() > 0.05:
+	# 	egg.crashed.connect(_on_egg_crashed)
+	# 	egg.caught.connect(_on_egg_caught)
+	# else:
+	# 	egg.rotten = true
+	# 	egg.caught.connect(_on_egg_crashed)
+	egg_parent.add_child(egg)
 	egg.gravity_scale = DifficultyManager.get_gravity_scale()
 	is_timeout = false
 

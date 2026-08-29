@@ -22,17 +22,16 @@ size = Vector2(1153, 37)
 [node name="Test" type="Node2D" unique_id=471152253]
 script = ExtResource("1_5unt0")
 
-[node name="Player" parent="." unique_id=766519368 node_paths=PackedStringArray("positions") instance=ExtResource("3_we7ej")]
-position = Vector2(575, 643)
-positions = [NodePath("../PositionMarker0"), NodePath("../PositionMarker1"), NodePath("../PositionMarker2"), NodePath("../PositionMarker3")]
-
 [node name="HUD" parent="." unique_id=1193212197 instance=ExtResource("4_xi5sv")]
+layer = 5
 
-[node name="EggGenerator" type="Node2D" parent="." unique_id=478956919]
+[node name="EggGenerator" type="Node2D" parent="." unique_id=478956919 node_paths=PackedStringArray("roost", "egg_parent")]
 position = Vector2(990.99994, 368.00003)
 rotation = -0.34233928
 scale = Vector2(3.41, 0.425)
 script = ExtResource("5_2dgve")
+roost = NodePath("../GameCanvasLayer/Roost")
+egg_parent = NodePath("../EggCanvasLayer")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1331016368 groups=["floor"]]
 position = Vector2(611, 666)
@@ -41,8 +40,6 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1419838689]
 position = Vector2(-40, -23.5)
 shape = SubResource("RectangleShape2D_i60o8")
-
-[node name="Roost" parent="." unique_id=1055971496 instance=ExtResource("10_we7ej")]
 
 [node name="PositionMarker0" type="Node2D" parent="." unique_id=1257471528]
 position = Vector2(500, 640)
@@ -56,41 +53,13 @@ position = Vector2(500, 640)
 [node name="PositionMarker3" type="Node2D" parent="." unique_id=432198001]
 position = Vector2(650, 640)
 
-[node name="UI" type="Control" parent="." unique_id=1197091770]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ConfirmationDialog" type="ConfirmationDialog" parent="UI" unique_id=2108989251]
-oversampling_override = 1.0
-size = Vector2i(226, 100)
-ok_button_text = "OK"
-dialog_text = "Хотите пройти обучение?"
-
-[node name="GameMenu" parent="UI" unique_id=261793984 instance=ExtResource("9_vq3si")]
-visible = false
-layout_mode = 1
-offset_left = 259.0
-offset_top = 67.0
-offset_right = 259.0
-offset_bottom = 67.0
-
-[node name="EndGameDialog" parent="UI" unique_id=1723092759 instance=ExtResource("10_saoeg")]
-visible = false
-layout_mode = 1
-offset_left = 584.0
-offset_top = 293.0
-offset_right = 584.0
-offset_bottom = 293.0
-
 [node name="Dust" parent="." unique_id=1632906561 instance=ExtResource("10_xi5sv")]
 position = Vector2(571, 333)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=35924089]
+[node name="BackgroudCanvasLayer" type="CanvasLayer" parent="." unique_id=35924089]
 layer = -2
 
-[node name="PointLight2D" type="PointLight2D" parent="CanvasLayer" unique_id=1142014589]
+[node name="PointLight2D" type="PointLight2D" parent="BackgroudCanvasLayer" unique_id=1142014589]
 position = Vector2(571, 269)
 color = Color(0.74509805, 1, 0.627451, 1)
 energy = 3.0
@@ -100,35 +69,91 @@ range_layer_max = -1
 texture = ExtResource("9_xi5sv")
 texture_scale = 13.59
 
-[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer" unique_id=1970959268]
+[node name="CanvasModulate" type="CanvasModulate" parent="BackgroudCanvasLayer" unique_id=1970959268]
 color = Color(0.56696963, 0.38180238, 0.42722076, 1)
 
-[node name="Background" type="Sprite2D" parent="CanvasLayer" unique_id=922220610]
+[node name="Background" type="Sprite2D" parent="BackgroudCanvasLayer" unique_id=922220610]
 z_index = -8
 material = SubResource("CanvasItemMaterial_xi5sv")
 position = Vector2(577.49994, 252.18753)
 scale = Vector2(0.39910156, 0.40332273)
 texture = ExtResource("2_saoeg")
 
-[node name="Fireplace" parent="CanvasLayer" unique_id=1526664572 instance=ExtResource("9_5unt0")]
+[node name="Fireplace" parent="BackgroudCanvasLayer" unique_id=1526664572 instance=ExtResource("9_5unt0")]
 z_index = -2
 position = Vector2(541, 613)
 
-[node name="Closet" type="Sprite2D" parent="CanvasLayer" unique_id=1301109741]
+[node name="Closet" type="Sprite2D" parent="BackgroudCanvasLayer" unique_id=1301109741]
 z_index = -6
 position = Vector2(106.99999, 288)
 scale = Vector2(0.15274706, 0.15806864)
 texture = ExtResource("11_we7ej")
 
-[node name="Closet2" type="Sprite2D" parent="CanvasLayer" unique_id=1878734545]
+[node name="Closet2" type="Sprite2D" parent="BackgroudCanvasLayer" unique_id=1878734545]
 z_index = -6
 position = Vector2(1006, 293)
 scale = Vector2(0.153, 0.153)
 texture = ExtResource("11_we7ej")
 
-[node name="Walls" type="Sprite2D" parent="CanvasLayer" unique_id=1709242872]
+[node name="Walls" type="Sprite2D" parent="BackgroudCanvasLayer" unique_id=1709242872]
 visible = false
 z_index = -7
 position = Vector2(601.875, 223.62497)
 scale = Vector2(0.65669274, 0.53852797)
 texture = ExtResource("13_2dgve")
+
+[node name="GameCanvasLayer" type="CanvasLayer" parent="." unique_id=1342804307]
+
+[node name="Player" parent="GameCanvasLayer" unique_id=766519368 node_paths=PackedStringArray("positions") instance=ExtResource("3_we7ej")]
+position = Vector2(575, 643)
+positions = [NodePath("../../PositionMarker0"), NodePath("../../PositionMarker1"), NodePath("../../PositionMarker2"), NodePath("../../PositionMarker3")]
+
+[node name="Roost" parent="GameCanvasLayer" unique_id=1055971496 instance=ExtResource("10_we7ej")]
+
+[node name="PointLight2D" type="PointLight2D" parent="GameCanvasLayer" unique_id=1877640764]
+position = Vector2(544.5, 369.47006)
+scale = Vector2(1.7556566, 1.4865481)
+color = Color(1.7943457, 1.9754877, 1.3490386, 0.5137255)
+energy = 1.41
+blend_mode = 2
+range_layer_min = -1
+range_layer_max = 1
+texture = ExtResource("9_xi5sv")
+texture_scale = 13.59
+
+[node name="CanvasModulate" type="CanvasModulate" parent="GameCanvasLayer" unique_id=1336203764]
+color = Color(0.56696963, 0.38180238, 0.42722076, 1)
+
+[node name="EggCanvasLayer" type="CanvasLayer" parent="." unique_id=134424021]
+layer = 2
+
+[node name="MenuCanvasLayer" type="CanvasLayer" parent="." unique_id=575250640]
+layer = 6
+
+[node name="UI" type="Control" parent="MenuCanvasLayer" unique_id=1197091770]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="MenuCanvasLayer/UI" unique_id=2108989251]
+oversampling_override = 1.0
+size = Vector2i(226, 100)
+ok_button_text = "OK"
+dialog_text = "Хотите пройти обучение?"
+
+[node name="GameMenu" parent="MenuCanvasLayer/UI" unique_id=261793984 instance=ExtResource("9_vq3si")]
+visible = false
+layout_mode = 1
+offset_left = 259.0
+offset_top = 67.0
+offset_right = 259.0
+offset_bottom = 67.0
+
+[node name="EndGameDialog" parent="MenuCanvasLayer/UI" unique_id=1723092759 instance=ExtResource("10_saoeg")]
+visible = false
+layout_mode = 1
+offset_left = 584.0
+offset_top = 293.0
+offset_right = 584.0
+offset_bottom = 293.0
