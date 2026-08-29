@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bnmus77tmq0q8"]
+
+[ext_resource type="Theme" uid="uid://cof53kiqdjl0e" path="res://ui/styles/theme.theme" id="1_lyo2b"]
+[ext_resource type="Script" uid="uid://ddybm5ueakkv1" path="res://ui/dialog/dialog_ui.gd" id="1_t163k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t163k"]
+bg_color = Color(0.654902, 0.6313726, 0.3254902, 1)
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_right = 30
+corner_detail = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_t163k"]
+line_spacing = 5.0
+font_size = 26
+
+[node name="DialogUI" type="Control" unique_id=766281430]
+custom_minimum_size = Vector2(0, 324)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_lyo2b")
+script = ExtResource("1_t163k")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2056245501]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -254.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CharacterBox" type="PanelContainer" parent="VBoxContainer" unique_id=1055639059]
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_t163k")
+
+[node name="Character" type="Label" parent="VBoxContainer/CharacterBox" unique_id=1541439163]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Кто ты, путник?"
+
+[node name="DialogBox" type="PanelContainer" parent="VBoxContainer" unique_id=624397439]
+custom_minimum_size = Vector2(0, 210)
+layout_mode = 2
+
+[node name="Text" type="Label" parent="VBoxContainer/DialogBox" unique_id=1303291292]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("1_lyo2b")
+text = "О нет, что же мне делать? В этой игре совершенно ничего нет! Я ведь даже не могу
+выпить кофе"
+label_settings = SubResource("LabelSettings_t163k")
+clip_text = true
