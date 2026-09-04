@@ -2,16 +2,16 @@ extends Node
 
 var score = 0
 var egg_gravity_scale_values = [0.5, 1, 1.5, 2, 2.5, 2.8, 3]
-var egg_gravity_scale_points = [50, 100, 120, 150, 200, 300, 500]
+var egg_gravity_scale_points = [40, 100, 120, 150, 200, 300, 500]
 var egg_gravity_scale = egg_gravity_scale_values[0]
 var scale_index = 0
-var score_time_control_points = [ 10, 20, 30, 50, 70]
+var score_time_control_points = [ 5, 20, 30, 50, 70]
 var spawn_times = [
 	5,
-	4,
 	3,
 	2,
-	1.5
+	1.5,
+	1.25
 	]
 var timeout: float = spawn_times[0]
 var time_index = 0

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://qiis1dbhc3ss"]
+
+[ext_resource type="Script" uid="uid://b2dpsmh6ans4v" path="res://scenes/dialogue_test/dialogut_test.gd" id="1_glg6p"]
+[ext_resource type="Resource" uid="uid://bt4yw1ekt0je4" path="res://scenes/dialogue_test/npc.dialogue" id="2_siw8e"]
+
+[node name="DialogutTest" type="Node2D" unique_id=982507936]
+script = ExtResource("1_glg6p")
+dialogue = ExtResource("2_siw8e")

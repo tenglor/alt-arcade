@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dth0wkql67bja"]
 
-[ext_resource type="Texture2D" uid="uid://butelshr38spv" path="res://icon.svg" id="1_qu0mo"]
+[ext_resource type="Texture2D" uid="uid://ksuy5barpgr8" path="res://icon.svg" id="1_qu0mo"]
 [ext_resource type="Script" uid="uid://b1rgi3u3by0ta" path="res://objects/perch/perch.gd" id="1_y45th"]
 [ext_resource type="PackedScene" uid="uid://dq85a8obr2t27" path="res://actors/chicken/chicken.tscn" id="2_y45th"]
 [ext_resource type="Texture2D" uid="uid://erirrpbahj4n" path="res://objects/perch/perch.png" id="3_4ub83"]
