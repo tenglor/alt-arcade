@@ -22,6 +22,7 @@ func _on_body_exited(body) -> void:
 func spawn_egg() -> Node2D:
 	# Создаем экземпляр (копию) шаблона
 	var egg = egg_prefab.instantiate()
+	AudioManager.spawn_sound()
 	# Устанавливаем его позицию
 	egg.position = position
 	return egg
