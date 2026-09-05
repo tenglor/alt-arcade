@@ -45,6 +45,8 @@ func _ready() -> void:
 	DifficultyManager.reset()
 	menu.closed.connect(close_menu)
 
+	AudioManager.ambient_sound_start()
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		if is_menu_open:
