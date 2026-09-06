@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://t0c05bt1vvyc" path="res://actors/player/player.tscn" id="3_we7ej"]
 [ext_resource type="PackedScene" uid="uid://bqkeh3b8bismv" path="res://ui/hud/hud.tscn" id="4_xi5sv"]
 [ext_resource type="Script" uid="uid://b0mn4fhhvmr7r" path="res://scrips/egg_generator.gd" id="5_2dgve"]
+[ext_resource type="Texture2D" uid="uid://c22kbh1y6veip" path="res://effects/sparcles/sparcle1.png" id="5_x4ubh"]
 [ext_resource type="PackedScene" uid="uid://dgv7ircsrqhb2" path="res://objects/fireplace/fireplace.tscn" id="9_5unt0"]
 [ext_resource type="PackedScene" uid="uid://bvjfderfpdtx1" path="res://ui/game_menu/game_menu.tscn" id="9_vq3si"]
 [ext_resource type="Texture2D" uid="uid://ceatnpo1b4xk4" path="res://effects/light.png" id="9_xi5sv"]
@@ -55,6 +56,25 @@ position = Vector2(650, 640)
 
 [node name="Dust" parent="." unique_id=1632906561 instance=ExtResource("10_xi5sv")]
 position = Vector2(571, 333)
+
+[node name="Dust2" type="CPUParticles2D" parent="." unique_id=1624458676]
+visible = false
+position = Vector2(571, 333)
+amount = 100
+texture = ExtResource("5_x4ubh")
+lifetime = 10.0
+preprocess = 12.0
+fixed_fps = 30
+emission_shape = 3
+emission_rect_extents = Vector2(600, 400)
+gravity = Vector2(0, 1)
+initial_velocity_min = 0.5
+initial_velocity_max = 0.8
+angular_velocity_min = -286.0
+angular_velocity_max = 232.0
+scale_amount_min = 0.05
+scale_amount_max = 0.2
+color = Color(1, 1, 1, 0.4862745)
 
 [node name="BackgroudCanvasLayer" type="CanvasLayer" parent="." unique_id=35924089]
 layer = -2
@@ -138,6 +158,7 @@ offset_bottom = 40.0
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="MenuCanvasLayer/UI" unique_id=2108989251]
 oversampling_override = 1.0
+position = Vector2i(0, 36)
 size = Vector2i(226, 100)
 ok_button_text = "OK"
 dialog_text = "Хотите пройти обучение?"

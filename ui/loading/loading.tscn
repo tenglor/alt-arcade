@@ -1,5 +1,58 @@
 [gd_scene format=3 uid="uid://cm7clhpg6tshb"]
 
+[ext_resource type="Script" uid="uid://scaaeoxgmaer" path="res://ui/loading/loading.gd" id="1_is4br"]
+[ext_resource type="Texture2D" uid="uid://c7dr1xis43o8j" path="res://assets/maid_run.png" id="2_2jffr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jffr"]
+atlas = ExtResource("2_2jffr")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbd3p"]
+atlas = ExtResource("2_2jffr")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oitr"]
+atlas = ExtResource("2_2jffr")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqdbn"]
+atlas = ExtResource("2_2jffr")
+region = Rect2(0, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aeyqy"]
+atlas = ExtResource("2_2jffr")
+region = Rect2(1024, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s70xq"]
+atlas = ExtResource("2_2jffr")
+region = Rect2(2048, 1024, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p07ip"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jffr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbd3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6oitr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqdbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aeyqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s70xq")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 12.0
+}]
+
 [node name="Loading" type="Control" unique_id=1969985081]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +60,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_is4br")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1400178245]
 layout_mode = 1
@@ -15,4 +69,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.14950478, 0.15734965, 0.02698199, 1)
+color = Color(0.101960786, 0.101960786, 0.101960786, 0.6)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1018523658]
+position = Vector2(1001.00006, 495)
+scale = Vector2(0.23291016, 0.23291016)
+sprite_frames = SubResource("SpriteFrames_p07ip")
+animation = &"run"
+frame_progress = 0.11192969

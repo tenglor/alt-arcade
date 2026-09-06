@@ -22,9 +22,9 @@ func _ready() -> void:
 	chicken_roosts.append(roost.get_node("Perch2"))
 	chicken_roosts.append(roost.get_node("Perch3"))
 
-	var timer = Timer.new()
-	# Добавляем его в сцену
-	add_child(timer)
+	# var timer = Timer.new()
+	# # Добавляем его в сцену
+	# add_child(timer)
 
 	deferred_spawn(2)
 
