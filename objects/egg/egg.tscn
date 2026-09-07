@@ -14,8 +14,7 @@ collision_mask = 3
 mass = 0.2
 physics_material_override = ExtResource("1_bqdda")
 script = ExtResource("2_ujh0f")
-rotten = null
-type = null
+type = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=295305459]
 position = Vector2(0, -25)

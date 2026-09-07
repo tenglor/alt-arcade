@@ -1,3 +1,4 @@
+@tool
 extends RigidBody2D
 
 enum Type {
@@ -14,13 +15,31 @@ var initial_impulse: Vector2
 
 @onready var sprite:=$Sprite2D
 
-@export var rotten = false
-@export var type: Type = Type.NORMAL
+var _type: Type = Type.NORMAL
+@export var type: Type = Type.NORMAL :
+	get:
+		return _type
+	set(value):
+		_type = value
+		_update_egg_sprite()
+		notify_property_list_changed()
+
+func _update_egg_sprite():
+	if not sprite:
+		# Если спрайт еще не загружен, пробуем найти его
+		sprite = $Sprite2D
+		if not sprite:
+			return
+	print("sprite: ", sprite)
+	match _type:
+		Type.NORMAL:
+			sprite.modulate = Color(1, 1, 1)
+		Type.ROTTEN:
+			sprite.modulate = Color(0.5, 0.5, 0.5)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if type == Type.ROTTEN:
-		sprite.modulate = Color(0.5, 0.5, 0.5)
+	_update_egg_sprite()
 	body_entered.connect(_on_body_entered)
 	contact_monitor = true
 	max_contacts_reported = 1
