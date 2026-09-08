@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://brvjaah0ae7fh" path="res://scenes/test/background.png" id="2_saoeg"]
 [ext_resource type="PackedScene" uid="uid://t0c05bt1vvyc" path="res://actors/player/player.tscn" id="3_we7ej"]
 [ext_resource type="PackedScene" uid="uid://bqkeh3b8bismv" path="res://ui/hud/hud.tscn" id="4_xi5sv"]
-[ext_resource type="Script" uid="uid://b0mn4fhhvmr7r" path="res://scrips/egg_generator.gd" id="5_2dgve"]
+[ext_resource type="Script" uid="uid://b0mn4fhhvmr7r" path="res://scripts/egg_generator.gd" id="5_2dgve"]
 [ext_resource type="Texture2D" uid="uid://c22kbh1y6veip" path="res://effects/sparcles/sparcle1.png" id="5_x4ubh"]
 [ext_resource type="PackedScene" uid="uid://dgv7ircsrqhb2" path="res://objects/fireplace/fireplace.tscn" id="9_5unt0"]
 [ext_resource type="PackedScene" uid="uid://bvjfderfpdtx1" path="res://ui/game_menu/game_menu.tscn" id="9_vq3si"]
