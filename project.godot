@@ -14,7 +14,7 @@ config/name="alt-arcade"
 config/version="0.2.9"
 run/main_scene="uid://ue3333w80k7c"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="uid://dt7isiaincs71"
+config/icon="uid://cwse6ydjitmif"
 
 [autoload]
 

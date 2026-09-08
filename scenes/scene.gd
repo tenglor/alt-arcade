@@ -20,6 +20,10 @@ func _jump_to_tutorial():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print(1)
+	$Dust.restart()
+	await get_tree().process_frame
+	await get_tree().process_frame
+
 	menu = ui.get_node("GameMenu")
 	score = ui.get_node("EndGameDialog")
 	tutorial_dialog = ui.get_node("ConfirmationDialog")

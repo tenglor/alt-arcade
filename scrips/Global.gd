@@ -20,7 +20,6 @@ func load_scene(target_scene) -> void:
 	await RenderingServer.frame_post_draw
 
 
-	var t = Time.get_ticks_msec()
 	ResourceLoader.load_threaded_request(target_scene)
 	# print("load_threaded_request ", Time.get_ticks_msec() - t)
 	while true:
@@ -34,20 +33,10 @@ func load_scene(target_scene) -> void:
 		await get_tree().process_frame
 		# await RenderingServer.frame_post_draw
 
-	t = Time.get_ticks_msec()
 	var packed_scene = ResourceLoader.load_threaded_get(target_scene)
 
-	print("get resource: ", Time.get_ticks_msec() - t, " ms")
 
-	t = Time.get_ticks_msec()
-	var new_room
-	if target_scene != test_scene:
-		new_room = packed_scene.instantiate()
-	else:
-		# new_room = Node2D.new()
-		new_room = packed_scene.instantiate()
-
-	print("instantiate: ", Time.get_ticks_msec() - t, " ms")
+	var new_room = packed_scene.instantiate()
 
 	# Создаём Node в отдельном потоке.
 	# thread = Thread.new()
@@ -59,10 +48,8 @@ func load_scene(target_scene) -> void:
 
 	# var new_room = thread.wait_to_finish()
 
-	t = Time.get_ticks_msec()
 	get_tree().root.add_child(new_room)
 	get_tree().current_scene = new_room
-	print("add_child: ", Time.get_ticks_msec() - t, " ms")
 
 	await get_tree().process_frame
 	await get_tree().process_frame

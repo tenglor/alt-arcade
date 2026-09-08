@@ -56,6 +56,7 @@ position = Vector2(650, 640)
 
 [node name="Dust" parent="." unique_id=1632906561 instance=ExtResource("10_xi5sv")]
 position = Vector2(571, 333)
+preprocess = 3.0
 
 [node name="Dust2" type="CPUParticles2D" parent="." unique_id=1624458676]
 visible = false

@@ -22,7 +22,7 @@ var _type: Type = Type.NORMAL
 	set(value):
 		_type = value
 		_update_egg_sprite()
-		notify_property_list_changed()
+		# notify_property_list_changed()
 
 func _update_egg_sprite():
 	if not sprite:
@@ -30,7 +30,6 @@ func _update_egg_sprite():
 		sprite = $Sprite2D
 		if not sprite:
 			return
-	print("sprite: ", sprite)
 	match _type:
 		Type.NORMAL:
 			sprite.modulate = Color(1, 1, 1)
@@ -43,8 +42,9 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	contact_monitor = true
 	max_contacts_reported = 1
-	caught.connect(AudioManager.catch_sound)
-	crashed.connect(AudioManager.crash_sound)
+	if Engine.is_editor_hint():
+		caught.connect(AudioManager.catch_sound)
+		crashed.connect(AudioManager.crash_sound)
 
 
 func _on_body_entered(body: Node2D) -> void:
