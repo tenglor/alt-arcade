@@ -19,7 +19,6 @@ func _jump_to_tutorial():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(1)
 	$Dust.restart()
 	await get_tree().process_frame
 	await get_tree().process_frame
@@ -28,9 +27,7 @@ func _ready() -> void:
 	score = ui.get_node("EndGameDialog")
 	tutorial_dialog = ui.get_node("ConfirmationDialog")
 
-	print(2)
 	if tutorial_dialog && Global.tutorial_offer:
-		print(3)
 		PauseManager.pause_game()
 		PauseManager.add_ignore_pause(tutorial_dialog)
 		tutorial_dialog.visible = true
@@ -45,10 +42,8 @@ func _ready() -> void:
 		tutorial_dialog.canceled.connect(_tutorial_offer_passed.emit)
 		tutorial_dialog.custom_action.connect(_hard_cancel_tutorial)
 
-		print(4)
 		await _tutorial_offer_passed
 
-		print(5)
 		PauseManager.resume_game()
 
 	print(6)
