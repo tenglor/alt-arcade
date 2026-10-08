@@ -59,7 +59,7 @@ func _ready() -> void:
 	var screen_size := get_viewport().get_visible_rect().size
 	var label
 	label = Label.new()
-	label.text = "Q"
+	label.text = "W"
 	label.add_theme_font_size_override("font_size", int(screen_size.y * 0.25))
 	label.size = Vector2(screen_size.x / 2, screen_size.y / 2)
 	label.position = Vector2(0, 0)
@@ -68,7 +68,7 @@ func _ready() -> void:
 	click_area_show.add_child(label)
 
 	label = Label.new()
-	label.text = "E"
+	label.text = "O"
 	label.add_theme_font_size_override("font_size", int(screen_size.y * 0.25))
 	label.size = Vector2(screen_size.x / 2, screen_size.y / 2)
 	label.position = Vector2(screen_size.x / 2, 0)
@@ -77,7 +77,7 @@ func _ready() -> void:
 	click_area_show.add_child(label)
 
 	label = Label.new()
-	label.text = "A"
+	label.text = "S"
 	label.add_theme_font_size_override("font_size", int(screen_size.y * 0.25))
 	label.size = Vector2(screen_size.x / 2, screen_size.y / 2)
 	label.position = Vector2(0, screen_size.y / 2)
@@ -86,7 +86,7 @@ func _ready() -> void:
 	click_area_show.add_child(label)
 
 	label = Label.new()
-	label.text = "D"
+	label.text = "K"
 	label.add_theme_font_size_override("font_size", int(screen_size.y * 0.25))
 	label.size = Vector2(screen_size.x / 2, screen_size.y / 2)
 	label.position = Vector2(screen_size.x / 2, screen_size.y / 2)

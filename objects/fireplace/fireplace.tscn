@@ -120,6 +120,7 @@ scale = Vector2(0.265, 0.265)
 texture = ExtResource("5_ka42a")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1081945460]
+visible = false
 modulate = Color(1, 1, 0.29411766, 1)
 self_modulate = Color(1, 1, 0.9372549, 1)
 z_index = -1

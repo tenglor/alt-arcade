@@ -11,7 +11,7 @@ extends Node2D
 var rng = RandomNumberGenerator.new()
 var is_timeout = false
 
-
+@export var enable_generating = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# hud = get_parent().get_child("HUD")
@@ -26,7 +26,8 @@ func _ready() -> void:
 	# # Добавляем его в сцену
 	# add_child(timer)
 
-	deferred_spawn(2)
+	if enable_generating:
+		deferred_spawn(2)
 
 func _on_timer_timeout():
 	var i = rng.randi_range(0, 3)
@@ -70,7 +71,7 @@ func deferred_spawn(timer_timeout: float):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if is_timeout:
+	if is_timeout or not enable_generating:
 		return
 	# print("Создание таймера")
 	deferred_spawn(DifficultyManager.get_egg_spawn_time())

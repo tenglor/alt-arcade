@@ -14,10 +14,12 @@ var difficulty_dict: Array[Dictionary] = [
 	{"gravity": 1.8, "timeout": 0.8},
 	{"gravity": 2,   "timeout": 0.8},
 	{"gravity": 2,   "timeout": 0.7},
+	{"gravity": 2,   "timeout": 0.6},
+	{"gravity": 2,   "timeout": 0.5},
 ]
 var index = 0
 var score = 0
-var control_points = [ 5, 10, 15, 25, 30, 35, 40, 45, 50, 55, 60, 70]
+var control_points = [ 5, 10, 15, 25, 30, 35, 40, 45, 50, 55, 60, 70, 80, 90]
 var egg_gravity_scale: float
 var timeout: float
 

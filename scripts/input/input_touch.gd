@@ -8,8 +8,11 @@ signal quarter_clicked(quarter_number)
 
 @onready var input_mask = 0xF
 
-var input_delay = 0.1
+# var input_delay = 0.1
+var input_delay = 0
 var current_time = 0
+
+var key_list = [KEY_W, KEY_O, KEY_S, KEY_K]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,18 +49,18 @@ func _input(event):
 	elif event is InputEventKey and event.pressed and !event.is_echo():
 		var quarter_bit = 0x1
 		var quarter_changed = false
-		if event.keycode == KEY_Q:
+		if event.physical_keycode  == key_list[0]:
 			quarter_changed = true
 			quarter = 0
-		elif event.keycode == KEY_E:
+		elif event.physical_keycode  == key_list[1]:
 			quarter_changed = true
 			quarter = 1
 			quarter_bit = quarter_bit << 1
-		elif event.keycode == KEY_A:
+		elif event.physical_keycode  == key_list[2]:
 			quarter_changed = true
 			quarter = 2
 			quarter_bit = quarter_bit << 2
-		elif event.keycode == KEY_D:
+		elif event.physical_keycode  == key_list[3]:
 			quarter_changed = true
 			quarter = 3
 			quarter_bit = quarter_bit << 3

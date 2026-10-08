@@ -55,6 +55,7 @@ position = Vector2(500, 640)
 position = Vector2(650, 640)
 
 [node name="Dust" parent="." unique_id=1632906561 instance=ExtResource("10_xi5sv")]
+visible = false
 position = Vector2(571, 333)
 preprocess = 3.0
 
