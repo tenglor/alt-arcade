@@ -29,9 +29,12 @@ func _ready() -> void:
 	if enable_generating:
 		deferred_spawn(2)
 
-func _on_timer_timeout():
+func _on_timer_timeout(timer_timeout):
 	var i = rng.randi_range(0, 3)
 	var chicken = chicken_roosts[i]
+	# chicken.get_node("Chicken").set_state(Chicken.State.TENSE)
+	# await get_tree().create_timer(timer_timeout / 2).timeout
+	# chicken.get_node("Chicken").set_state(Chicken.State.NORMAL)
 	var egg = chicken.spawn_egg()
 	egg.z_index = egg.z_index + 2
 	egg.crashed.connect(_on_egg_crashed)
@@ -62,12 +65,13 @@ func deferred_spawn(timer_timeout: float):
 	# Добавляем его в сцену
 	add_child(timer)
 
+	# timer.wait_time = timer_timeout / 2
 	timer.wait_time = timer_timeout
 	timer.one_shot = true
+	timer.timeout.connect(_on_timer_timeout.bind(timer_timeout))
+
 	# Автоматически запускаем при входе в дерево сцены
 	timer.start()
-	# Подключаем сигнал timeout к функции
-	timer.timeout.connect(_on_timer_timeout)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

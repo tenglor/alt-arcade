@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="alt-arcade"
-config/version="0.3.1"
+config/version="1.0.0"
 run/main_scene="uid://ue3333w80k7c"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/image="uid://bup7lqu43dkv8"
 config/icon="uid://cwse6ydjitmif"
 
 [autoload]
